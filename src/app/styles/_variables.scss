@@ -1,0 +1,34 @@
+:root {
+	--color-main: #fff;
+	--color-secondary: #F5F8FD;
+	--color-paragraph: #575757;
+	--color-blue: #1D00C3;
+	--color-dark-blue: #14005C;
+	--color-black-blue: #0B0026;
+	--color-violet: #6900FF;
+	--color-white: #FFF;
+	--color-dark: #000;
+	--color-text: var(--color-dark);
+
+	--color-gradient: linear-gradient(140deg, var(--color-red), var(--color-dark-red));
+
+	--border-radius: 20px;
+	--border-radius-small: 5px;
+
+	--font-family-base: 'Moscow University', 'IBM Plex Sans', sans-serif;
+
+	--container-width: 1240px;
+	--container-padding-x: 20px;
+
+	--padding-base: 30px;
+	--margin-base: var(--padding-base);
+
+	--section-padding-y: 25px;
+	--section-margin-y: var(--section-padding-y);
+
+	--button-height: 30px;
+
+	--transition-duration: 200ms;
+}
+
+

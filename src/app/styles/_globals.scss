@@ -1,0 +1,80 @@
+@import 'mixins';
+
+html {
+	scroll-behavior: smooth;
+}
+body {
+	@include fluid-text(20, 18);
+
+	font-family: var(--font-family-base);
+	color: var(--color-text);
+	background-color: var(--color-main);
+
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+
+
+	main {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+a,
+button,
+input,
+textarea,
+svg * {
+	transition-duration: var(--transition-duration);
+}
+
+
+a {
+	text-decoration: none;
+	color: inherit;
+	color: var(--color-white);
+
+	@media (hover: hover) {
+		&:hover {
+			opacity: 0.9;
+		}
+	}
+	@media (hover: none) {
+		&:active {
+			opacity: 0.9;
+		}
+	}
+}
+
+h1,
+.h1 {
+	@include fluid-text(60, 43);
+	font-weight: 300;
+}
+
+h2,
+.h2 {
+	@include fluid-text(46, 30);
+	font-weight: 300;
+}
+
+h3,
+.h3 {
+	@include fluid-text(30, 20);
+	font-weight: 300;
+}
+
+p,
+.p {
+	&.paragraph{
+		color: var(--color-paragraph);
+	}
+	@include fluid-text(20, 16);
+	font-weight: 300;
+}
+
+.not-clickable {
+	user-select: none;
+}

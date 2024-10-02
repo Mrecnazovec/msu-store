@@ -1,0 +1,24 @@
+.mission {
+	padding-block: calc(var(--section-padding-y)*2);
+
+	.container {
+		padding-block: var(--section-padding-y);
+
+		background-color: var(--color-secondary);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+
+
+		h3 {
+			text-align: center;
+			color: var(--color-blue);
+			margin: 0;
+		}
+		p{
+			text-align: center;
+			max-width: 705px;
+		}
+	}
+}
