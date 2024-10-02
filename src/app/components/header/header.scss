@@ -196,6 +196,10 @@
 				position: static;
 				display: none;
 			}
+
+			a {
+				width: fit-content;
+			}
 		}
 
 		.dropdown.active {

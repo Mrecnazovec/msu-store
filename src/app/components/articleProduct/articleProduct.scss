@@ -86,7 +86,16 @@
 		padding: calc(var(--section-padding-y) * 2);
 		width: 100%;
 		max-width: 1300px;
+		margin-inline: var(--margin-base);
+		max-height: 90%;
+		overflow-y: scroll;
 		border-radius: var(--border-radius);
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
 
 		@include mobile {
 			flex-direction: column;
