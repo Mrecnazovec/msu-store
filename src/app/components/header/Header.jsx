@@ -161,7 +161,7 @@ const Header = () => {
 						>
 							<div className='currencyBox'>
 								<Image alt='' src={`/svg/${currency}.svg`} height={20} width={30}></Image>
-								<p>{currency == 'Uzb' ? 'Cумм' : currency == 'Ru' ? 'Руб.' : 'Usd'}</p>
+								<p>{currency == 'Uzb' ? 'Cум' : currency == 'Ru' ? 'Руб.' : 'Usd'}</p>
 								<svg width='20' height='21' viewBox='0 0 20 21' fill='none' xmlns='http://www.w3.org/2000/svg'>
 									<path
 										fillRule='evenodd'
