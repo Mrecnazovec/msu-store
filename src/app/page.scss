@@ -27,7 +27,11 @@
 		}
 
 		.product-article {
-			margin-inline: calc(var(--margin-base)/2);
+			@include mobile-s {
+				margin-inline: calc(var(--margin-base)/2);
+				box-shadow: none;
+			}
+			
 		}
 	}
 }
