@@ -69,14 +69,6 @@ const ArticleProduct = ({ item }) => {
 			<div onClick={handleOverlayClick} className={`modalOverlay ${isOpen && 'open'}`}>
 				<div className='modalContent'>
 					<div className='modal-picture'>
-						{/* <div className='modal-picture-nav'>
-							{item.details[indexInfo].imgPath.map((item, index) => (
-								<Image width={150} height={150} src={item} onClick={() => handleColor(index)} key={index}></Image>
-							))}
-							{item.details[indexInfo].imgPath.map((item, index) => (
-								<Image width={150} height={150} src={item} onClick={() => handleColor(index)} key={index}></Image>
-							))}
-						</div> */}
 						<div className='modal-picture-main'>
 							<Image alt='' src={imgPath} height={380} width={380}></Image>
 							<Flickity className='Slider' elementType='div' disableImagesLoaded={false} options={flickityOptions} reloadOnUpdate static>

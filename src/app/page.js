@@ -3,8 +3,8 @@ import { getProduct } from "./_actions/previewSlider";
 import Hello from "./sections/hello/Hello";
 import Mission from "./sections/mission/Mission";
 import PreviewSlider from "./sections/previewSlider/PreviewSlider";
-import ArticleProduct from "./components/articleProduct/articleProduct";
 import './page.scss'
+import ArticleSlider from "./components/articleProduct/articleSlider";
 
 export default async function Home() {
 
@@ -19,11 +19,9 @@ export default async function Home() {
 			<section className="clothSection">
 				<div className="container">
 					<h2>Одежда</h2>
-					<div className="cloth">
-						{data.map((item, index)=>(
-							<ArticleProduct key={index} item={item}/>
-						))}
-					</div>
+
+
+					<ArticleSlider data={data}/>
 				</div>
 			</section>
 

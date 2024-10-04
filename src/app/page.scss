@@ -16,5 +16,18 @@
 		@include mobile-s {
 			grid-template-columns: repeat(1, 1fr);
 		}
+
+		&:after {
+			content: '';
+
+			@include mobile-s {
+				content: 'flickity';
+				display: none;
+			}
+		}
+
+		.product-article {
+			margin-inline: calc(var(--margin-base)/2);
+		}
 	}
 }
