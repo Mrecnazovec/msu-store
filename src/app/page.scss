@@ -20,10 +20,10 @@
 		&:after {
 			content: '';
 
-			@include mobile-s {
-				content: 'flickity';
-				display: none;
-			}
+			// @include mobile-s {
+			// 	content: 'flickity';
+			// 	display: none;
+			// }
 		}
 
 		.product-article {
