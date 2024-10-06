@@ -213,7 +213,46 @@ const Header = () => {
 								</div>
 							)}
 						</li>
+						
+
+						
+						
 					))}
+
+<li
+								onMouseEnter={() => handleMouseEnter(111)}
+								onMouseLeave={handleMouseLeave}
+								onClick={() => handleClick(111)}
+								className={`dropdown ${activeIndex === 111 ? 'active' : ''}`}
+							>
+								<div className='currencyBox'>
+									<Image alt='' src={`/svg/${currency}.svg`} height={20} width={30}></Image>
+									<p>{currency == 'Uzb' ? 'Узбекистан' : currency == 'Ru' ? 'Россия' : 'Другая'}</p>
+									<svg width='20' height='21' viewBox='0 0 20 21' fill='none' xmlns='http://www.w3.org/2000/svg'>
+										<path
+											fillRule='evenodd'
+											clipRule='evenodd'
+											d='M10.637 12.7022C10.3144 13.0396 9.78676 13.044 9.45856 12.712L5.25627 8.46119C4.92806 8.12917 4.92353 7.58648 5.24616 7.24903C5.5688 6.9116 6.09641 6.9072 6.42464 7.2392L10.0326 10.8889L13.5792 7.17951C13.9018 6.84207 14.4295 6.83767 14.7577 7.16968C15.0859 7.50169 15.0904 8.04438 14.7678 8.38183L10.637 12.7022Z'
+											fill='white'
+										/>
+									</svg>
+								</div>
+
+								<div className='dropdown-item'>
+									<div onClick={() => setCurrency('Uzb')} className={`currencyBox dropdown-currency ${currency == 'Uzb' && 'none'}`}>
+										<Image alt='' src='/svg/Uzb.svg' height={20} width={30}></Image>
+										<p>Узбекистан</p>
+									</div>
+									<div onClick={() => setCurrency('Ru')} className={`currencyBox dropdown-currency ${currency == 'Ru' && 'none'}`}>
+										<Image alt='' src='/svg/Ru.svg' height={20} width={30}></Image>
+										<p>Россия</p>
+									</div>
+									<div onClick={() => setCurrency('Usd')} className={`currencyBox dropdown-currency ${currency == 'Usd' && 'none'}`}>
+										<Image alt='' src='/svg/Usd.svg' height={20} width={30}></Image>
+										<p>Другая</p>
+									</div>
+								</div>
+							</li>
 				</ul>
 			</div>
 		</header>

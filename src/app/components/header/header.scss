@@ -133,12 +133,9 @@
 			color: var(--color-white);
 			display: flex;
 			gap: 3px;
-			padding-inline: 25px;
 			width: 230px;
 
-			@include tablet {
-				padding-inline: 10px;
-			}
+			
 
 			p {
 				margin-bottom: 0;
