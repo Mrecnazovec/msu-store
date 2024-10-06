@@ -21,6 +21,7 @@
 	p {
 		text-align: center;
 		margin-bottom: 0;
+		@include fluid-text(20, 14)
 	}
 	.choose-color {
 		display: flex;
@@ -42,6 +43,7 @@
 	}
 	.modalOpen-btn {
 		@include reset-button;
+		@include fluid-text(18, 12);
 		background-color: var(--color-blue);
 		color: var(--color-white);
 		padding: 4px 15px;
@@ -54,6 +56,10 @@
 			color: var(--color-blue);
 			background-color: var(--color-white);
 			border: 1px solid var(--color-blue);
+		}
+
+		@include mobile-s {
+			padding: 2px 10px;
 		}
 	}
 

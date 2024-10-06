@@ -16,7 +16,6 @@ const ArticleProduct = ({ item }) => {
 
 	const [indexInfo, setIndexInfo] = useState(0)
 	const [indexPic, setIndexPic] = useState(0)
-	console.log(item)
 
 	const handleColor = (index) => {
 		setImgPath(item.details[index].imgPath[0])
@@ -56,13 +55,13 @@ const ArticleProduct = ({ item }) => {
 					></div>
 				))}
 			</div>
-			<div className='product-price'>
+			<p className='product-price'>
 				{currency == 'Uzb'
 					? item.price[0].price + ' ' + item?.price[0].currency
 					: currency == 'Ru'
 					? item.price[1].price + ' ' + item?.price[1].currency
 					: item.price[2].price + ' ' + '$'}
-			</div>
+			</p>
 			<button type='button' onClick={() => setIsOpen(true)} className='modalOpen-btn'>
 				Подробнее
 			</button>

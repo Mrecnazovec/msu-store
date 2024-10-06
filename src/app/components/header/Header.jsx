@@ -29,52 +29,14 @@ const Header = () => {
 		{
 			title: 'Аксессуары',
 			href: '/',
-			links: [
-				{
-					title: 'Брелки',
-					href: '/',
-				},
-				{
-					title: 'Шоперы',
-					href: '/',
-				},
-				{
-					title: 'Наушники',
-					href: '/',
-				},
-			],
 		},
 		{
 			title: 'Канцтовары',
 			href: '/',
-			links: [
-				{
-					title: 'Ручки',
-					href: '/',
-				},
-				{
-					title: 'Тетради',
-					href: '/',
-				},
-				{
-					title: 'Блокноты',
-					href: '/',
-				},
-			],
 		},
 		{
 			title: 'Кастомная одежда',
 			href: '/',
-			links: [
-				{
-					title: 'Худи',
-					href: '/',
-				},
-				{
-					title: 'Футболки',
-					href: '/',
-				},
-			],
 		},
 		{
 			title: 'О нас',
@@ -161,7 +123,7 @@ const Header = () => {
 						>
 							<div className='currencyBox'>
 								<Image alt='' src={`/svg/${currency}.svg`} height={20} width={30}></Image>
-								<p>{currency == 'Uzb' ? 'Cум' : currency == 'Ru' ? 'Руб.' : 'Usd'}</p>
+								<p>{currency == 'Uzb' ? 'Узбекистан' : currency == 'Ru' ? 'Россия' : 'Другая'}</p>
 								<svg width='20' height='21' viewBox='0 0 20 21' fill='none' xmlns='http://www.w3.org/2000/svg'>
 									<path
 										fillRule='evenodd'
@@ -175,15 +137,15 @@ const Header = () => {
 							<div className='dropdown-item'>
 								<div onClick={() => setCurrency('Uzb')} className={`currencyBox dropdown-currency ${currency == 'Uzb' && 'none'}`}>
 									<Image alt='' src='/svg/Uzb.svg' height={20} width={30}></Image>
-									<p>Сум</p>
+									<p>Узбекистан</p>
 								</div>
 								<div onClick={() => setCurrency('Ru')} className={`currencyBox dropdown-currency ${currency == 'Ru' && 'none'}`}>
 									<Image alt='' src='/svg/Ru.svg' height={20} width={30}></Image>
-									<p>Руб.</p>
+									<p>Россия</p>
 								</div>
 								<div onClick={() => setCurrency('Usd')} className={`currencyBox dropdown-currency ${currency == 'Usd' && 'none'}`}>
 									<Image alt='' src='/svg/Usd.svg' height={20} width={30}></Image>
-									<p>Usd</p>
+									<p>Другая</p>
 								</div>
 							</div>
 						</li>
@@ -232,7 +194,7 @@ const Header = () => {
 						>
 							<div className='currencyBox'>
 								<Image alt='' src={`/svg/${currency}.svg`} height={20} width={30}></Image>
-								<p>{currency == 'Uzb' ? 'Cумм' : currency == 'Ru' ? 'Руб.' : 'Usd'}</p>
+								<p>{currency == 'Uzb' ? 'Узбекистан' : currency == 'Ru' ? 'Россия' : 'Другая'}</p>
 								<svg width='20' height='21' viewBox='0 0 20 21' fill='none' xmlns='http://www.w3.org/2000/svg'>
 									<path
 										fillRule='evenodd'
@@ -246,15 +208,15 @@ const Header = () => {
 							<div className='dropdown-item'>
 								<div onClick={() => setCurrency('Uzb')} className={`currencyBox dropdown-currency ${currency == 'Uzb' && 'none'}`}>
 									<Image alt='' src='/svg/Uzb.svg' height={20} width={30}></Image>
-									<p>Сум</p>
+									<p>Узбекистан</p>
 								</div>
 								<div onClick={() => setCurrency('Ru')} className={`currencyBox dropdown-currency ${currency == 'Ru' && 'none'}`}>
 									<Image alt='' src='/svg/Ru.svg' height={20} width={30}></Image>
-									<p>Руб.</p>
+									<p>Россия</p>
 								</div>
 								<div onClick={() => setCurrency('Usd')} className={`currencyBox dropdown-currency ${currency == 'Usd' && 'none'}`}>
 									<Image alt='' src='/svg/Usd.svg' height={20} width={30}></Image>
-									<p>Usd</p>
+									<p>Другая</p>
 								</div>
 							</div>
 						</li>
