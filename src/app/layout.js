@@ -5,7 +5,8 @@ import { GlobalOfferContext } from './context/offerContext'
 import './styles/styles.scss'
 
 export const metadata = {
-	title: 'MSU-store',
+	title: 'MSU STORE',
+	authors: [{ name: 'Aleksandr A. Salnikov', url: 'https://t.me/AlexITdrom' }],
 	description: '',
 }
 
