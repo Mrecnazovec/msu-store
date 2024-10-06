@@ -3,22 +3,22 @@
 import Image from 'next/image'
 import { useOfferContext } from '../context/offerContext'
 import './page.scss'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { useCurrencyContext } from '../context/CurrencyContext'
 
 const page = () => {
-	const { currency, setCurrency } = useCurrencyContext()
+	const { currency } = useCurrencyContext()
 	const { offerData } = useOfferContext()
 	const [comment, setComment] = useState('')
 	const [name, setName] = useState('')
 	const [user, setUser] = useState('')
+	const [price, setPrice] = useState('')
 
-	// Функция для отправки данных в Telegram
 	const sendToTelegram = async (data) => {
-		const token = '7526799764:AAFmZWYKs_Nw55qE8b9F70O5dbtGwpSDW3M' // Замените на токен вашего бота
-		const chatId = '-1002453789209' // Замените на chat_id вашего канала
-		const message = `Новый заказ:\n${data[0]}\nИмя: ${data[4]}\nРазмер: ${data[1]}\nЦвет: ${data[2]}\nНомер телефона: ${data[3]}\nЮзер: ${data[5]}`
+		const token = '7526799764:AAFmZWYKs_Nw55qE8b9F70O5dbtGwpSDW3M'
+		const chatId = '-1002453789209'
+		const message = `Новый заказ:\n${data[0]}\nИмя: ${data[4]}\nРазмер: ${data[1]}\nЦвет: ${data[2]}\nЦена: ${data[5]}\nНомер телефона: ${data[3]}\nЮзер: ${data[6]}`
 
 		const url = `https://api.telegram.org/bot${token}/sendMessage`
 
@@ -51,7 +51,20 @@ const page = () => {
 		}
 	}
 
-	const data = [offerData[0], offerData[2], offerData[3], comment, name, user] // Формируем данные для отправки
+	const data = [offerData[0], offerData[2], offerData[3], comment, name, price, user]
+
+	useEffect(() => {
+		if (offerData.length > 0) {
+			const newPrice =
+				currency === 'Uzb'
+					? offerData[4][0].price + ' ' + offerData[4][0].currency
+					: currency === 'Ru'
+					? offerData[4][1].price + ' ' + offerData[4][1].currency
+					: offerData[4][2].price + ' ' + '$'
+
+			setPrice(newPrice)
+		}
+	}, [currency, offerData])
 
 	if (offerData.length !== 0) {
 		return (
@@ -63,9 +76,7 @@ const page = () => {
 							<p>{offerData[0]}</p>
 							<p>Размер: {offerData[2]}</p>
 							<p>Цвет: {offerData[3]}</p>
-							<p>Цена: {' '}
-								{currency == 'Uzb' ? offerData[4][0].price + ' ' + offerData[4][0].currency : currency == 'Ru' ? offerData[4][1].price + ' ' + offerData[4][1].currency : offerData[4][2].price + ' ' + offerData[4][2].currency}
-							</p>
+							<p>Цена: {price}</p>
 
 							<label>
 								Имя
