@@ -80,7 +80,7 @@ const page = () => {
 								<input type='text' value={user} onChange={(e) => setUser(e.target.value)} />
 							</label>
 							<button className='btnSubmit' onClick={() => sendToTelegram(data)}>
-								Отправить в Telegram
+								Отправить заявку
 							</button>
 						</article>
 					</div>

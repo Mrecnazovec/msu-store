@@ -1,0 +1,35 @@
+.footer {
+	background-color: var(--color-blue);
+	padding-block: var(--section-padding-y);
+	font-family: 'IBM Plex Sans';
+
+	&-logo {
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		color: var(--color-white);
+		gap: 10px;
+		align-self: center;
+
+		svg {
+			width: 45px;
+			height: 45px;
+		}
+	}
+
+	&-content {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.soc1als {
+		display: flex;
+		gap: calc(var(--margin-base) / 2);
+
+		svg {
+			width: 30px;
+			aspect-ratio: 1;
+		}
+	}
+}

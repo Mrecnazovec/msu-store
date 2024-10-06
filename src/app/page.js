@@ -15,7 +15,7 @@ export default async function Home() {
 		<main className='mainPage'>
 			<Hello />
 			<PreviewSlider />
-			<Mission />
+			{/* <Mission /> */}
 
 			<section className='clothSection'>
 				<div className='container'>
@@ -23,7 +23,7 @@ export default async function Home() {
 
 					<div className='cloth'>
 						{hoodiesData.map((item, index) => (
-							<ArticleProduct key={index} item={item} />
+							<ArticleProduct key={index} item={item} index={index} />
 						))}
 					</div>
 				</div>

@@ -9,16 +9,16 @@ import Flickity from 'react-flickity-component'
 import Link from 'next/link'
 import { useOfferContext } from '@/app/context/offerContext'
 
-const ArticleProduct = ({ item }) => {
+const ArticleProduct = ({ item, index }) => {
 	const { currency, setCurrency } = useCurrencyContext()
 	const { offerData, setOfferData } = useOfferContext()
-	const [imgPath, setImgPath] = useState(item.details[0].imgPath[0])
-	const [picPath, setPicPath] = useState(item.details[0].imgPath[0])
+	const [imgPath, setImgPath] = useState(item.details[index].imgPath[0])
+	const [picPath, setPicPath] = useState(item.details[index].imgPath[0])
 	const [isOpen, setIsOpen] = useState(false)
-	const [sizeIndex, setSizeIndex] = useState(0)
+	const [sizeIndex, setSizeIndex] = useState(index)
 
-	const [indexInfo, setIndexInfo] = useState(0)
-	const [indexPic, setIndexPic] = useState(0)
+	const [indexInfo, setIndexInfo] = useState(index)
+	const [indexPic, setIndexPic] = useState(index)
 
 	const offerDataItem = [item.title, imgPath, item.details[indexInfo].size[sizeIndex].title, item.details[indexInfo].color, item.price]
 
