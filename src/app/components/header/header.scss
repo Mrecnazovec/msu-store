@@ -5,13 +5,22 @@
 	background-color: var(--color-blue);
 	padding-block: 8px;
 	position: relative;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	transition: transform var(--transition-duration) ease; 
+	z-index: 1000;
+
+	&.hidden {
+		transform: translateY(-100%); 
+	}
+
+	&.visible {
+		transform: translateY(0); 
+	}
 
 	nav {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: var(--margin-base);
-
+		position: relative;
 		@include tablet {
 			gap: calc(var(--margin-base) / 2);
 			flex-wrap: wrap;
@@ -23,14 +32,32 @@
 			justify-content: space-between;
 		}
 	}
+	.topBox-nav {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: calc(var(--margin-base) / 2);
+
+		@include mobile {
+			margin-bottom: 0;
+		}
+	}
+	.psevdoBurger {
+	}
 
 	&-logo {
 		@include flex-center($isInline: true);
 		color: var(--color-white);
 		gap: 10px;
+		align-self: center;
+
+		svg {
+			width: 45px;
+			height: 45px;
+		}
 
 		p {
-			@include fluid-text(16, 14);
+			@include fluid-text(20, 16);
 			text-transform: uppercase;
 		}
 
@@ -39,9 +66,15 @@
 		}
 	}
 
+	.currency-list {
+		position: absolute;
+		right: 0;
+	}
+
 	&-list {
 		display: flex;
 		align-items: center;
+		justify-content: center;
 		height: 100%;
 
 		.dropdown {
@@ -102,6 +135,7 @@
 			display: flex;
 			gap: 3px;
 			padding-inline: 25px;
+			width: 230px;
 
 			@include tablet {
 				padding-inline: 10px;
@@ -121,7 +155,10 @@
 	}
 
 	// Burger
-
+	.burger-pos {
+		position: absolute;
+		left: 0;
+	}
 	.burger {
 		@include reset-button;
 		@include square(60px);
@@ -129,7 +166,6 @@
 			display: none;
 		}
 		cursor: pointer;
-
 		position: relative;
 		&::after {
 			@include abs-center;
@@ -179,7 +215,7 @@
 		background-color: var(--color-blue);
 		position: absolute;
 		left: 0;
-		top: 60px;
+		top: 52px;
 		transition-timing-function: linear;
 		transition-duration: var(--transition-duration);
 		padding-inline: 25px;

@@ -8,6 +8,9 @@ import ArticleProduct from './components/articleProduct/articleProduct'
 export default async function Home() {
 	const { data, errMsg } = await getProduct()
 
+	const hoodiesData = data.filter(item => item.subCategories === 'Худи');
+
+
 	return (
 		<main className='mainPage'>
 			<Hello />
@@ -16,10 +19,10 @@ export default async function Home() {
 
 			<section className='clothSection'>
 				<div className='container'>
-					<h2>Одежда</h2>
+					<h2 id='hoodies'>Худи</h2>
 
 					<div className='cloth'>
-						{data.map((item, index) => (
+						{hoodiesData.map((item, index) => (
 							<ArticleProduct key={index} item={item} />
 						))}
 					</div>

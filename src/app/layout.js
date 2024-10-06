@@ -1,6 +1,7 @@
 import Footer from './components/footer/Footer'
 import Header from './components/header/Header'
 import { GlobalCurrencyContext } from './context/CurrencyContext'
+import { GlobalOfferContext } from './context/offerContext'
 import './styles/styles.scss'
 
 export const metadata = {
@@ -13,9 +14,11 @@ export default function RootLayout({ children }) {
 		<html lang='en'>
 			<body>
 				<GlobalCurrencyContext>
-					<Header />
-					{children}
-					<Footer />
+					<GlobalOfferContext>
+						<Header />
+						{children}
+						<Footer />
+					</GlobalOfferContext>
 				</GlobalCurrencyContext>
 			</body>
 		</html>
