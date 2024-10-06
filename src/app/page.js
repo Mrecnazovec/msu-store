@@ -17,7 +17,7 @@ export default async function Home() {
 			<PreviewSlider />
 			{/* <Mission /> */}
 
-			<section className='clothSection'>
+			<section id='shop' className='clothSection'>
 				<div className='container'>
 					<h2 id='hoodies'>Худи</h2>
 

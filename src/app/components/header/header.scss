@@ -8,16 +8,16 @@
 	position: fixed;
 	top: 0;
 	width: 100%;
-	transition: transform var(--transition-duration) ease; 
+	transition: transform var(--transition-duration) ease;
 	z-index: 1000;
 	font-family: 'IBM Plex Sans';
 
 	&.hidden {
-		transform: translateY(-100%); 
+		transform: translateY(-100%);
 	}
 
 	&.visible {
-		transform: translateY(0); 
+		transform: translateY(0);
 	}
 
 	nav {
@@ -85,12 +85,10 @@
 				transition-duration: var(--transition-duration);
 			}
 
-			&:not(:last-child) {
-				padding-inline: 25px;
+			padding-inline: 25px;
 
-				@include tablet {
-					padding-inline: 10px;
-				}
+			@include tablet {
+				padding-inline: 10px;
 			}
 
 			&-item {
