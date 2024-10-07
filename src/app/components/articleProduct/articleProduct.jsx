@@ -74,32 +74,39 @@ const ArticleProduct = ({ item, index }) => {
 		<article className='product-article'>
 			<div onClick={() => setIsOpen(true)} className='product-content'>
 				<Image alt='' src={imgPath} height={380} width={380}></Image>
-				<p>{item.title}</p>
-
-				<div className='choose-color-pic'>
-					{item.details.map((item, index) => (
-						<div onMouseEnter={() => handleColor(index)} key={index} className={`color-box circle-pic ${indexInfo == index ? 'active' : ''}`}>
-							<Image alt='' width={30} height={30} src={item.imgPath[0]}></Image>
-						</div>
-					))}
+				<div className='product-article-body'>
+					<p>{item.title}</p>
+					<div className='choose-color-pic'>
+						{item.details.map((item, index) => (
+							<div onMouseEnter={() => handleColor(index)} key={index} className={`color-box circle-pic ${indexInfo == index ? 'active' : ''}`}>
+								<Image alt='' width={30} height={30} src={item.imgPath[0]}></Image>
+							</div>
+						))}
+					</div>
+					<div className='price-box'>
+						<p className='product-price'>
+							{currency == 'Uzb'
+								? item.price[0].price + ' ' + item?.price[0].currency
+								: currency == 'Ru'
+								? item.price[1].price + ' ' + item?.price[1].currency
+								: item.price[2].price + ' ' + '$'}
+						</p>
+						<p className='product-price'>
+							{currency == 'Uzb'
+								? String(Number(item.price[0].price.replace('.', '') * 0.85).toLocaleString('de-DE')) + ' ' + item?.price[0].currency
+								: currency == 'Ru'
+								? String(Number(item.price[1].price.replace('.', '') * 0.85).toLocaleString('de-DE')) + ' ' + item?.price[1].currency
+								: String(
+										Number(item.price[2].price.replace(',', '.') * 0.85)
+											.toFixed(1)
+											.toLocaleString('de-DE')
+								  ) +
+								  ' ' +
+								  '$'}
+						</p>
+					</div>
+					<p className='discount-text'>Скидка 15% на первый заказ всем студентам МГУ</p>
 				</div>
-				<div className='price-box'>
-					<p className='product-price'>
-						{currency == 'Uzb'
-							? item.price[0].price + ' ' + item?.price[0].currency
-							: currency == 'Ru'
-							? item.price[1].price + ' ' + item?.price[1].currency
-							: item.price[2].price + ' ' + '$'}
-					</p>
-					<p className='product-price'>
-						{currency == 'Uzb'
-							? String(Number(item.price[0].price.replace('.', '') * 0.85).toLocaleString('de-DE')) + ' ' + item?.price[0].currency
-							: currency == 'Ru'
-							? String(Number(item.price[1].price.replace('.', '') * 0.85).toLocaleString('de-DE')) + ' ' + item?.price[1].currency
-							: String(Number(item.price[2].price.replace(',', '.') * 0.85).toFixed(1).toLocaleString('de-DE')) + ' ' + '$'}
-					</p>
-				</div>
-				<p className='discount-text'>Скидка 15% на первый заказ всем студентам МГУ</p>
 				<div className='discount-banner'>
 					<p>-15%</p>
 				</div>
@@ -143,7 +150,13 @@ const ArticleProduct = ({ item, index }) => {
 									? String(Number(item.price[0].price.replace('.', '') * 0.85).toLocaleString('de-DE')) + ' ' + item?.price[0].currency
 									: currency == 'Ru'
 									? String(Number(item.price[1].price.replace('.', '') * 0.85).toLocaleString('de-DE')) + ' ' + item?.price[1].currency
-									: String(Number(item.price[2].price.replace(',', '.') * 0.85).toFixed(1).toLocaleString('de-DE')) + ' ' + '$'}
+									: String(
+											Number(item.price[2].price.replace(',', '.') * 0.85)
+												.toFixed(1)
+												.toLocaleString('de-DE')
+									  ) +
+									  ' ' +
+									  '$'}
 							</h3>
 						</div>
 						<p className='modal-text-description'>{item.description}</p>
@@ -163,16 +176,20 @@ const ArticleProduct = ({ item, index }) => {
 							</p>
 							<div className='dropDownDesc-content'>
 								<p className='modal-text-pluses'>
-									<Image alt='' className='modal-icon' src='/svg/стирать.svg' width={30} height={30}></Image>Стирать, вывернув наизнанку, в деликатном режиме при температуре 30°C
+									<Image alt='' className='modal-icon' src='/svg/стирать.svg' width={30} height={30}></Image>Стирать, вывернув наизнанку, в деликатном
+									режиме при температуре 30°C
 								</p>
 								<p className='modal-text-pluses'>
-									<Image alt='' className='modal-icon' src='/svg/обеливатели.svg' width={30} height={30}></Image>Не использовать отбеливающие средства при стирке
+									<Image alt='' className='modal-icon' src='/svg/обеливатели.svg' width={30} height={30}></Image>Не использовать отбеливающие средства
+									при стирке
 								</p>
 								<p className='modal-text-pluses'>
-									<Image alt='' className='modal-icon' src='/svg/деликатный режим.svg' width={30} height={30}></Image>Деликатный отжим не более 400 оборотов
+									<Image alt='' className='modal-icon' src='/svg/деликатный режим.svg' width={30} height={30}></Image>Деликатный отжим не более 400
+									оборотов
 								</p>
 								<p className='modal-text-pluses'>
-									<Image alt='' className='modal-icon' src='/svg/гладить утюгом.svg' width={30} height={30}></Image>Гладить утюгом не выше 100°C, с внутренней стороны изделия
+									<Image alt='' className='modal-icon' src='/svg/гладить утюгом.svg' width={30} height={30}></Image>Гладить утюгом не выше 100°C, с
+									внутренней стороны изделия
 								</p>
 							</div>
 						</div>
@@ -185,12 +202,12 @@ const ArticleProduct = ({ item, index }) => {
 									{item?.title}
 								</div>
 							))}
-							<p onClick={()=>setSizeModal(true)} className='modal-text-pluses'>
-									<Image alt='' className='modal-icon' src='/svg/линейка.svg' width={30} height={30}></Image>Размерная сетка
-								</p>
+							<p onClick={() => setSizeModal(true)} className='modal-text-pluses'>
+								<Image alt='' className='modal-icon' src='/svg/линейка.svg' width={30} height={30}></Image>Размерная сетка
+							</p>
 						</div>
 						<div onClick={handleSizeOverlayClick} className={`sizeModalOverlay ${sizeModal ? 'open' : ''}`}>
-							<Image src='/png/Размерная сетка.png' width={400} height={400}></Image>
+							<Image alt='' src='/png/Размерная сетка.png' width={400} height={400}></Image>
 						</div>
 						<p className='modal-text-color'>
 							<span>Цвет:</span> {item.details[indexInfo].color}
@@ -203,8 +220,8 @@ const ArticleProduct = ({ item, index }) => {
 								</div>
 							))}
 						</div>
-						<p className='modal-text-pluses'>
-							<Image alt='' className='modal-icon' src='/svg/теплая ткань.svg' width={30} height={30}></Image>Тёплая и мягкая ткань из
+						<p className='modal-text-pluses border'>
+							<Image alt='' className='modal-icon' src='/svg/теплая ткань.svg' width={30} height={30}></Image>Теплая и мягкая ткань из
 							высококачественного хлопка
 						</p>
 						<p className='modal-text-pluses'>
@@ -226,7 +243,7 @@ const ArticleProduct = ({ item, index }) => {
 						</p>
 						<p className='modal-text-pluses'>
 							<Image alt='' className='modal-icon' src='/svg/вся прибыль.svg' width={30} height={30}></Image>Вся прибыль реинвестируется в зарплаты
-							студентов, финансовую помощь, и развитие проекта
+							студентов, финансовую помощь и развитие проекта
 						</p>
 						<p className='modal-text-pluses'>
 							<Image alt='' className='modal-icon' src='/svg/доставка (2).svg' width={30} height={30}></Image>Доставка по всему миру

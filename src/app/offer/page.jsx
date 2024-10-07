@@ -15,6 +15,7 @@ const page = () => {
 	const [user, setUser] = useState('')
 	const [price, setPrice] = useState('')
 	const [ready, setReady] = useState(false)
+	const [error, setError] = useState('')
 
 	const sendToTelegram = async (data) => {
 		const token = '7526799764:AAFmZWYKs_Nw55qE8b9F70O5dbtGwpSDW3M'
@@ -29,6 +30,9 @@ const page = () => {
 		}
 
 		try {
+
+			if (!name || !user || !comment) return setError('Все поля должны быть заполнены!')
+
 			const response = await fetch(url, {
 				method: 'POST',
 				headers: {
@@ -41,7 +45,7 @@ const page = () => {
 			if (result.ok) {
 				console.log('Сообщение успешно отправлено:', result)
 			} else {
-				console.error('Ошибка при отправке сообщения:', result)
+				setError('Ошибка при отправке сообщения:', result)
 			}
 
 			setComment('')
@@ -49,7 +53,7 @@ const page = () => {
 			setName('')
 			setReady(true)
 		} catch (error) {
-			console.error('Ошибка:', error)
+			setError('Ошибка:', error)
 		}
 	}
 
@@ -117,6 +121,7 @@ const page = () => {
 							<button className='btnSubmit' onClick={() => sendToTelegram(data)}>
 								Отправить заявку
 							</button>
+							<p className='errorMessage'>{error}</p>
 						</article>
 					</div>
 				</div>

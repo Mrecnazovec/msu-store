@@ -19,6 +19,15 @@
 		gap: calc(var(--margin-base) / 2);
 		cursor: pointer;
 		position: relative;
+
+		.product-article-body {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			gap: calc(var(--margin-base) / 2);
+			padding: 5px;
+		}
 	}
 
 	img {
@@ -39,11 +48,7 @@
 		justify-content: flex-start;
 		gap: 5px;
 		flex-wrap: wrap;
-		// .color-box {
-		// 	width: 15px;
-		// 	aspect-ratio: 1;
-		// 	border-radius: 50%;
-		// }
+
 		.circle-pic {
 			width: 40px;
 			aspect-ratio: 1;
@@ -182,7 +187,6 @@
 	}
 
 	.modalOverlay.openSub {
-
 		.modal-text {
 			overflow: hidden;
 		}
@@ -318,6 +322,23 @@
 				align-items: center;
 				gap: calc(var(--margin-base) / 2);
 
+				&.border {
+					padding-top: calc(var(--margin-base) / 2);
+					position: relative;
+					z-index: -1;
+
+					&::after {
+						content: '';
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 30%;
+						height: 1px;
+						background-color: var(--color-dark);
+						opacity: 0.5;
+					}
+				}
+
 				.modal-icon {
 					width: 30px;
 					height: 30px;
@@ -329,11 +350,24 @@
 				align-items: center;
 				gap: calc(var(--margin-base) / 2);
 				flex-wrap: wrap;
+				padding-bottom: calc(var(--margin-base) / 2);
+				position: relative;
+
+				&::before {
+					content: '';
+					position: absolute;
+					bottom: 0;
+					left: 0;
+					width: 30%;
+					height: 1px;
+					background-color: var(--color-dark);
+					opacity: 0.5;
+				}
 
 				.modal-text-pluses {
 					gap: 5px;
 					@include fluid-text(16, 14);
-					cursor:pointer;
+					cursor: pointer;
 				}
 
 				.size-box {
@@ -372,7 +406,7 @@
 				justify-content: center;
 			}
 
-			img{
+			img {
 				max-width: 500px;
 				max-height: 500px;
 				height: auto;
