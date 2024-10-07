@@ -51,6 +51,15 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	
+	div {
+		text-align: center;
+	}
+
+	p {
+		max-width: 700px;
+		text-align: center;
+	}
 
 	a {
 		color: var(--color-blue);

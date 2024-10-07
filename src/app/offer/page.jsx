@@ -14,6 +14,7 @@ const page = () => {
 	const [name, setName] = useState('')
 	const [user, setUser] = useState('')
 	const [price, setPrice] = useState('')
+	const [ready, setReady] = useState(false)
 
 	const sendToTelegram = async (data) => {
 		const token = '7526799764:AAFmZWYKs_Nw55qE8b9F70O5dbtGwpSDW3M'
@@ -46,6 +47,7 @@ const page = () => {
 			setComment('')
 			setUser('')
 			setName('')
+			setReady(true)
 		} catch (error) {
 			console.error('Ошибка:', error)
 		}
@@ -65,6 +67,17 @@ const page = () => {
 			setPrice(newPrice)
 		}
 	}, [currency, offerData])
+
+	if (ready) {
+		return (
+			<main className='nullOffer'>
+				<div>
+					<p>Заявка принята. В ближайшее время с Вами свяжется наш менеджер для завершения заказа! Если этого не произошло, пожалуйста, свяжитесь с <Link target='_blank' href='https://t.me/msustoremanager'>t.me/msustoremanager</Link></p>
+					<Link href='/'>Перейти к каталогу товаров</Link>
+				</div>
+			</main>
+		)
+	}
 
 	if (offerData.length !== 0) {
 		return (
@@ -102,7 +115,7 @@ const page = () => {
 
 	return (
 		<main className='nullOffer'>
-			<Link href='/'>Перейти к выбору товара</Link>
+			<Link href='/#shop'>Перейти к каталогу товаров</Link>
 		</main>
 	)
 }

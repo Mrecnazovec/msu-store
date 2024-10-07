@@ -15,7 +15,7 @@ const Header = () => {
 	const listData = [
 		{
 			title: 'Одежда',
-			href: '/',
+			href: '/#hoodies',
 			links: [
 				{
 					title: 'Худи',
