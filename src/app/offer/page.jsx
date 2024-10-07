@@ -68,7 +68,7 @@ const page = () => {
 					? String(Number(offerData[4][0].price.replace('.', '') * 0.85).toLocaleString('de-DE')) + ' ' + offerData[4][0].currency
 					: currency == 'Ru'
 					? String(Number(offerData[4][1].price.replace('.', '') * 0.85).toLocaleString('de-DE')) + ' ' + offerData[4][1].currency
-					: String(Number(offerData[4][2].price.replace(',', '.') * 0.85).toLocaleString('de-DE')) + ' ' + '$'
+					: String(Number(offerData[4][2].price.replace(',', '.') * 0.85).toFixed(1).toLocaleString('de-DE')) + ' ' + '$'
 
 			setPrice(newPrice)
 		}
