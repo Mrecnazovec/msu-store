@@ -5,6 +5,8 @@ import PreviewSlider from './sections/previewSlider/PreviewSlider'
 import './page.scss'
 import ArticleProduct from './components/articleProduct/articleProduct'
 
+export const revalidate = 10
+
 export default async function Home() {
 	const { data, errMsg } = await getProduct()
 
