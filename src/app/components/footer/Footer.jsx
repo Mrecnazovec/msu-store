@@ -19,7 +19,7 @@ const Footer = () => {
 						</p>
 					</Link>
 					<div className='soc1als'>
-						<Link href='https://t.me/msu_store'>
+						<Link target='_blank' href='https://t.me/msu_store'>
 							<svg width='30' height='30' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
 								<g clipPath='url(#clip0_32_948)'>
 									<path
@@ -34,7 +34,7 @@ const Footer = () => {
 								</defs>
 							</svg>
 						</Link>
-						<Link href='https://www.instagram.com/store.msu/'>
+						<Link target='_blank' href='https://www.instagram.com/store.msu/'>
 							<svg width='30' height='30' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
 								<g clipPath='url(#clip0_32_952)'>
 									<path

@@ -189,6 +189,8 @@ a {
 	overflow: hidden;
 	width: 30%;
 	max-width: 380px;
+	max-height: 491px;
+
 
 	@include mobile {
 		width: 50%;

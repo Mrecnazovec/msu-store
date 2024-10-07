@@ -186,7 +186,7 @@ const ArticleProduct = ({ item, index }) => {
 								</div>
 							))}
 							<p onClick={()=>setSizeModal(true)} className='modal-text-pluses'>
-									<Image alt='' className='modal-icon' src='/svg/линейка.svg' width={30} height={30}></Image>Размерная линейка
+									<Image alt='' className='modal-icon' src='/svg/линейка.svg' width={30} height={30}></Image>Размерная сетка
 								</p>
 						</div>
 						<div onClick={handleSizeOverlayClick} className={`sizeModalOverlay ${sizeModal ? 'open' : ''}`}>
