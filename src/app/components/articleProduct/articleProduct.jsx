@@ -17,6 +17,7 @@ const ArticleProduct = ({ item, index }) => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [sizeIndex, setSizeIndex] = useState(index)
 	const [ddIsOpen, setDdIsOpen] = useState(false)
+	const [sizeModal, setSizeModal] = useState(false)
 
 	const [indexInfo, setIndexInfo] = useState(index)
 	const [indexPic, setIndexPic] = useState(index)
@@ -36,6 +37,11 @@ const ArticleProduct = ({ item, index }) => {
 	const handleOverlayClick = (e) => {
 		if (e.target === e.currentTarget) {
 			setIsOpen(false)
+		}
+	}
+	const handleSizeOverlayClick = (e) => {
+		if (e.target === e.currentTarget) {
+			setSizeModal(false)
 		}
 	}
 
@@ -179,6 +185,12 @@ const ArticleProduct = ({ item, index }) => {
 									{item?.title}
 								</div>
 							))}
+							<p onClick={()=>setSizeModal(true)} className='modal-text-pluses'>
+									<Image alt='' className='modal-icon' src='/svg/линейка.svg' width={30} height={30}></Image>Размерная линейка
+								</p>
+						</div>
+						<div onClick={handleSizeOverlayClick} className={`sizeModalOverlay ${sizeModal ? 'open' : ''}`}>
+							<Image src='/png/Размерная сетка.png' width={400} height={400}></Image>
 						</div>
 						<p className='modal-text-color'>
 							<span>Цвет:</span> {item.details[indexInfo].color}
