@@ -285,6 +285,10 @@
 			padding-bottom: var(--margin-base);
 			overflow-y: scroll;
 
+			@include mobile {
+				overflow-y: visible;
+			}
+
 			&-title {
 				color: var(--color-blue);
 				font-weight: 600;
