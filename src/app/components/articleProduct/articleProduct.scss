@@ -181,6 +181,13 @@
 		}
 	}
 
+	.modalOverlay.openSub {
+
+		.modal-text {
+			overflow: hidden;
+		}
+	}
+
 	.modalOverlay.open {
 		display: flex;
 		opacity: 1;
@@ -371,6 +378,10 @@
 				height: auto;
 				border-radius: var(--border-radius);
 				z-index: 100;
+
+				@include mobile {
+					width: 90%;
+				}
 			}
 		}
 		.closeButtonModal {

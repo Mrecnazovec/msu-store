@@ -12,15 +12,15 @@ import { useOfferContext } from '@/app/context/offerContext'
 const ArticleProduct = ({ item, index }) => {
 	const { currency, setCurrency } = useCurrencyContext()
 	const { offerData, setOfferData } = useOfferContext()
-	const [imgPath, setImgPath] = useState(item.details[index].imgPath[0])
-	const [picPath, setPicPath] = useState(item.details[index].imgPath[0])
+	const [imgPath, setImgPath] = useState(item.details[item.active].imgPath[0])
+	const [picPath, setPicPath] = useState(item.details[item.active].imgPath[0])
 	const [isOpen, setIsOpen] = useState(false)
-	const [sizeIndex, setSizeIndex] = useState(index)
+	const [sizeIndex, setSizeIndex] = useState(item.active)
 	const [ddIsOpen, setDdIsOpen] = useState(false)
 	const [sizeModal, setSizeModal] = useState(false)
 
-	const [indexInfo, setIndexInfo] = useState(index)
-	const [indexPic, setIndexPic] = useState(index)
+	const [indexInfo, setIndexInfo] = useState(item.active)
+	const [indexPic, setIndexPic] = useState(item.active)
 
 	const offerDataItem = [item.title, imgPath, item.details[indexInfo].size[sizeIndex].title, item.details[indexInfo].color, item.price]
 
@@ -104,7 +104,7 @@ const ArticleProduct = ({ item, index }) => {
 					<p>-15%</p>
 				</div>
 			</div>
-			<div onClick={handleOverlayClick} className={`modalOverlay ${isOpen ? 'open' : ''}`}>
+			<div id='modalWindow' onClick={handleOverlayClick} className={`modalOverlay ${isOpen ? 'open' : ''} ${sizeModal ? 'openSub' : ''}`}>
 				<div className='modalContent'>
 					<button onClick={() => setIsOpen(false)} className='closeButtonModal'>
 						<Image alt='' width={30} height={30} src='/svg/close.svg'></Image>
