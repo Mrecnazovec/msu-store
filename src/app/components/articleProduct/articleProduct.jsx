@@ -48,11 +48,19 @@ const ArticleProduct = ({ item, index }) => {
 
 	return (
 		<article className='product-article'>
-			
 			<div onClick={() => setIsOpen(true)} className='product-content'>
 				<Image alt='' src={imgPath} height={380} width={380}></Image>
 				<p>{item.title}</p>
-				<div className='choose-color'>
+
+				<div className='choose-color-pic'>
+					{item.details.map((item, index) => (
+						<div key={index} className={`color-box circle-pic ${indexInfo == index ? 'active' : ''}`}>
+							<Image alt='' width={30} height={30} src={item.imgPath[0]}></Image>
+						</div>
+					))}
+				</div>
+
+				{/* <div className='choose-color'>
 					{item.details.map((item, index) => (
 						<div
 							onClick={() => handleColor(index)}
@@ -61,14 +69,27 @@ const ArticleProduct = ({ item, index }) => {
 							className={`color-box ${indexInfo == index ? 'active' : ''}`}
 						></div>
 					))}
+				</div> */}
+				<div className='price-box'>
+					<p className='product-price'>
+						{currency == 'Uzb'
+							? item.price[0].price + ' ' + item?.price[0].currency
+							: currency == 'Ru'
+							? item.price[1].price + ' ' + item?.price[1].currency
+							: item.price[2].price + ' ' + '$'}
+					</p>
+					<p className='product-price'>
+						{currency == 'Uzb'
+							? String(Number(item.price[0].price.replace('.', '') * 0.85).toLocaleString('de-DE')) + ' ' + item?.price[0].currency
+							: currency == 'Ru'
+							? String(Number(item.price[1].price.replace('.', '') * 0.85).toLocaleString('de-DE')) + ' ' + item?.price[1].currency
+							: String(Number(item.price[2].price.replace(',', '.') * 0.85).toLocaleString('de-DE')) + ' ' + '$'}
+					</p>
 				</div>
-				<p className='product-price'>
-					{currency == 'Uzb'
-						? item.price[0].price + ' ' + item?.price[0].currency
-						: currency == 'Ru'
-						? item.price[1].price + ' ' + item?.price[1].currency
-						: item.price[2].price + ' ' + '$'}
-				</p>
+				<p className='discount-text'>Скидка 15% на первый заказ всем студентам МГУ</p>
+				<div className='discount-banner'>
+					<p>-15%</p>
+				</div>
 			</div>
 			<div onClick={handleOverlayClick} className={`modalOverlay ${isOpen ? 'open' : ''}`}>
 				<div className='modalContent'>
@@ -95,16 +116,26 @@ const ArticleProduct = ({ item, index }) => {
 					</div>
 					<div className='modal-text'>
 						<h3 className='modal-text-title'>{item.title}</h3>
-						<h3 className='modal-text-price'>
-							{currency == 'Uzb'
-								? item.price[0].price + ' ' + item?.price[0].currency
-								: currency == 'Ru'
-								? item.price[1].price + ' ' + item?.price[1].currency
-								: item.price[2].price + ' ' + '$'}
-						</h3>
+
+						<div className='price-box'>
+							<h3 className='modal-text-price'>
+								{currency == 'Uzb'
+									? item.price[0].price + ' ' + item?.price[0].currency
+									: currency == 'Ru'
+									? item.price[1].price + ' ' + item?.price[1].currency
+									: item.price[2].price + ' ' + '$'}
+							</h3>
+							<h3 className='modal-text-price'>
+								{currency == 'Uzb'
+									? String(Number(item.price[0].price.replace('.', '') * 0.85).toLocaleString('de-DE')) + ' ' + item?.price[0].currency
+									: currency == 'Ru'
+									? String(Number(item.price[1].price.replace('.', '') * 0.85).toLocaleString('de-DE')) + ' ' + item?.price[1].currency
+									: String(Number(item.price[2].price.replace(',', '.') * 0.85).toLocaleString('de-DE')) + ' ' + '$'}
+							</h3>
+						</div>
 						<p className='modal-text-description'>{item.description}</p>
 						<p className='modal-text-size'>
-							Размер: {item.details[indexInfo].size[sizeIndex]?.title ? item.details[indexInfo].size[sizeIndex].title : setSizeIndex(0)}
+							<span>Размер:</span> {item.details[indexInfo].size[sizeIndex]?.title ? item.details[indexInfo].size[sizeIndex].title : setSizeIndex(0)}
 						</p>
 						<div className='modal-text-size-box'>
 							{item.details[indexInfo].size.map((item, index) => (
@@ -113,8 +144,11 @@ const ArticleProduct = ({ item, index }) => {
 								</div>
 							))}
 						</div>
-						<p style={{ color: item.details[indexInfo].colorHex }} className='modal-text-color'>Цвет: {item.details[indexInfo].color}</p>
-						<div className='modal-text-choose-color choose-color'>
+						<p className='modal-text-color'>
+							<span>Цвет:</span> {item.details[indexInfo].color}
+						</p>
+
+						{/* <div className='modal-text-choose-color choose-color'>
 							{item.details.map((item, index) => (
 								<div
 									onClick={() => handleColor(index)}
@@ -123,9 +157,25 @@ const ArticleProduct = ({ item, index }) => {
 									className={`color-box ${indexInfo == index ? 'active' : ''}`}
 								></div>
 							))}
+						</div> */}
+						<div className='choose-color-pic'>
+							{item.details.map((item, index) => (
+								<div onClick={() => handleColor(index)} key={index} className={`color-box circle-pic ${indexInfo == index ? 'active' : ''}`}>
+									<Image alt='' width={30} height={30} src={item.imgPath[0]}></Image>
+								</div>
+							))}
 						</div>
 
-						<Link onClick={()=>setOfferData(offerDataItem)} className='offerBtn' href='/offer'>
+						<p className='modal-text-pluses'><Image alt='' className='modal-icon' src='/svg/discount.svg' width={30} height={30}></Image>Скидка 15% на первый заказ всем студентам МГУ</p>
+						<p className='modal-text-pluses'><Image alt='' className='modal-icon' src='/svg/discount.svg' width={30} height={30}></Image>Создано студентами МГУ</p>
+						<p className='modal-text-pluses'><Image alt='' className='modal-icon' src='/svg/discount.svg' width={30} height={30}></Image>Вся прибыль реинвестируется в зарплаты студентов, финансовую помощь, и развитие проекта</p>
+						<p className='modal-text-pluses'><Image alt='' className='modal-icon' src='/svg/discount.svg' width={30} height={30}></Image>Доставка по всему миру</p>
+						<p className='modal-text-pluses'><Image alt='' className='modal-icon' src='/svg/discount.svg' width={30} height={30}></Image>Вышивка на передней и задней стороне</p>
+						<p className='modal-text-pluses'><Image alt='' className='modal-icon' src='/svg/discount.svg' width={30} height={30}></Image>Изготовление в течение 3-7 дней</p>
+						<p className='modal-text-pluses'><Image alt='' className='modal-icon' src='/svg/discount.svg' width={30} height={30}></Image>100% хлопок</p>
+						<p className='modal-text-pluses'><Image alt='' className='modal-icon' src='/svg/discount.svg' width={30} height={30}></Image>Оверсайз крой</p>
+
+						<Link onClick={() => setOfferData(offerDataItem)} className='offerBtn' href='/offer'>
 							Заказать
 						</Link>
 					</div>

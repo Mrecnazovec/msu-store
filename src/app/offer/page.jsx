@@ -58,11 +58,17 @@ const page = () => {
 	useEffect(() => {
 		if (offerData.length > 0) {
 			const newPrice =
-				currency === 'Uzb'
-					? offerData[4][0].price + ' ' + offerData[4][0].currency
-					: currency === 'Ru'
-					? offerData[4][1].price + ' ' + offerData[4][1].currency
-					: offerData[4][2].price + ' ' + '$'
+				// currency === 'Uzb'
+				// 	? offerData[4][0].price + ' ' + offerData[4][0].currency
+				// 	: currency === 'Ru'
+				// 	? offerData[4][1].price + ' ' + offerData[4][1].currency
+				// 	: offerData[4][2].price + ' ' + '$'
+
+				currency == 'Uzb'
+					? String(Number(offerData[4][0].price.replace('.', '') * 0.85).toLocaleString('de-DE')) + ' ' + offerData[4][0].currency
+					: currency == 'Ru'
+					? String(Number(offerData[4][1].price.replace('.', '') * 0.85).toLocaleString('de-DE')) + ' ' + offerData[4][1].currency
+					: String(Number(offerData[4][2].price.replace(',', '.') * 0.85).toLocaleString('de-DE')) + ' ' + '$'
 
 			setPrice(newPrice)
 		}
@@ -72,7 +78,12 @@ const page = () => {
 		return (
 			<main className='nullOffer'>
 				<div>
-					<p>Заявка принята. В ближайшее время с Вами свяжется наш менеджер для завершения заказа! Если этого не произошло, пожалуйста, свяжитесь с <Link target='_blank' href='https://t.me/msustoremanager'>t.me/msustoremanager</Link></p>
+					<p>
+						Заявка принята. В ближайшее время с Вами свяжется наш менеджер для завершения заказа! Если этого не произошло, пожалуйста, свяжитесь с{' '}
+						<Link target='_blank' href='https://t.me/msustoremanager'>
+							t.me/msustoremanager
+						</Link>
+					</p>
 					<Link href='/'>Перейти к каталогу товаров</Link>
 				</div>
 			</main>

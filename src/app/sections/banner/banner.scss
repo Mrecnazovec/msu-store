@@ -1,0 +1,15 @@
+@import '/src/app/styles/media';
+@import '/src/app/styles/mixins';
+
+.banner {
+	a {
+		img {
+			width: 100%;
+			height: auto;
+		}
+
+		@include hover {
+			opacity: 1;
+		}
+	}
+}

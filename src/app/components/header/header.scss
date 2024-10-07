@@ -60,6 +60,7 @@
 		p {
 			@include fluid-text(20, 16);
 			text-transform: uppercase;
+			font-family: 'Moscow University';
 		}
 
 		@include hover {

@@ -1,24 +1,37 @@
+@import '/src/app/styles/media';
+@import '/src/app/styles/mixins';
+
 .mission {
-	padding-block: calc(var(--section-padding-y)*2);
+	padding-block: calc(var(--section-padding-y) * 2);
+	background-color: var(--color-blue);
 
 	.container {
-		padding-block: var(--section-padding-y);
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: var(--margin-base);
 
-		background-color: var(--color-secondary);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
-
-
-		h3 {
-			text-align: center;
-			color: var(--color-blue);
-			margin: 0;
+		@include tablet {
+			grid-template-columns: repeat(2, 1fr);
 		}
-		p{
-			text-align: center;
-			max-width: 705px;
+		@include mobile-s {
+			grid-template-columns: repeat(1, 1fr);
+		}
+
+		.mission-card {
+			display: flex;
+			align-items: center;
+			gap: calc(var(--margin-base) / 2);
+
+			p {
+				@include fluid-text(16, 14);
+				color: var(--color-white);
+				text-align: center;
+
+				@include tablet {
+					text-align: left;
+
+				}
+			}
 		}
 	}
 }
