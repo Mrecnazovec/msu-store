@@ -27,6 +27,10 @@
 			flex-direction: column;
 			gap: calc(var(--margin-base) / 2);
 			padding: 5px;
+
+			@include mobile-s {
+				gap: 5px;
+			}
 		}
 	}
 
@@ -84,6 +88,10 @@
 	.price-box {
 		display: flex;
 		gap: calc(var(--margin-base) / 2);
+
+		@include mobile-s {
+			gap: 5px;
+		}
 
 		.product-price {
 			font-weight: 600;
