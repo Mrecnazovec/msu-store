@@ -1,6 +1,6 @@
 import Footer from './components/footer/Footer'
 import Header from './components/header/Header'
-import AOSProvider from './context/AOSprovider'
+import AOSProvider from './context/AOSProvider'
 import { GlobalCurrencyContext } from './context/CurrencyContext'
 import { GlobalOfferContext } from './context/offerContext'
 import './styles/styles.scss'
