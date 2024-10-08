@@ -15,11 +15,11 @@ const Header = () => {
 	const listData = [
 		{
 			title: 'Одежда',
-			href: '/#hoodies',
+			href: '#hoodies',
 			links: [
 				{
 					title: 'Худи',
-					href: '/#hoodies',
+					href: '#hoodies',
 				},
 				{
 					title: 'Футболки',

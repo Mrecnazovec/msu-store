@@ -20,7 +20,7 @@ const Hello = () => {
 							кто связан с МГУ.
 						</p>
 
-						<Link href='/#shop' className='toShop'>
+						<Link href='#shop' className='toShop'>
 							Перейти в магазин
 						</Link>
 					</div>

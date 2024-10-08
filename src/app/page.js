@@ -15,7 +15,7 @@ export default async function Home() {
 
 	return (
 		<main className='mainPage'>
-			<Banner imgPath='/png/Заставка на сайт.png'/>
+			<Banner imgPath='/png/banner.png'/>
 			<Hello />
 			<PreviewSlider />
 			<Mission />

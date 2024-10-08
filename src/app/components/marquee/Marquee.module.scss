@@ -1,0 +1,31 @@
+@use '../../styles/media';
+
+.marqueeContainer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background-color: var(--color-blue); /* Основной цвет */
+	color: white;
+	overflow: hidden;
+	white-space: nowrap;
+	padding: 5px 0;
+	z-index: 1000;
+}
+
+.marquee {
+	display: inline-block;
+	animation: marquee 15s linear infinite;
+
+	@include media.mobile {
+		animation: marquee 13s linear infinite;
+	}
+}
+
+@keyframes marquee {
+	0% {
+		transform: translateX(100%);
+	}
+	100% {
+		transform: translateX(-100%);
+	}
+}

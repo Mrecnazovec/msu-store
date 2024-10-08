@@ -1,13 +1,13 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useCurrencyContext } from '@/app/context/CurrencyContext'
+import { useOfferContext } from '@/app/context/offerContext'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import Flickity from 'react-flickity-component'
 import './articleProduct.scss'
 import './sliderConfig.scss'
-import Image from 'next/image'
-import { useCurrencyContext } from '@/app/context/CurrencyContext'
-import Flickity from 'react-flickity-component'
-import Link from 'next/link'
-import { useOfferContext } from '@/app/context/offerContext'
 
 const ArticleProduct = ({ item, index }) => {
 	const { currency, setCurrency } = useCurrencyContext()
@@ -180,20 +180,19 @@ const ArticleProduct = ({ item, index }) => {
 								</p>
 								<div className='dropDownDesc-content'>
 									<p className='modal-text-pluses'>
-										<Image alt='' className='modal-icon' src='/svg/стирать.svg' width={30} height={30}></Image>Стирать, вывернув наизнанку, в
-										деликатном режиме при температуре 30°C
+										<Image alt='' className='modal-icon' src='/svg/wash.svg' width={30} height={30}></Image>Стирать, вывернув наизнанку, в деликатном
+										режиме при температуре 30°C
 									</p>
 									<p className='modal-text-pluses'>
-										<Image alt='' className='modal-icon' src='/svg/обеливатели.svg' width={30} height={30}></Image>Не использовать отбеливающие
-										средства при стирке
+										<Image alt='' className='modal-icon' src='/svg/bleach.svg' width={30} height={30}></Image>Не использовать отбеливающие средства
+										при стирке
 									</p>
 									<p className='modal-text-pluses'>
-										<Image alt='' className='modal-icon' src='/svg/деликатный режим.svg' width={30} height={30}></Image>Деликатный отжим не более 400
-										оборотов
+										<Image alt='' className='modal-icon' src='/svg/delicate.svg' width={30} height={30}></Image>Деликатный отжим не более 400 оборотов
 									</p>
 									<p className='modal-text-pluses'>
-										<Image alt='' className='modal-icon' src='/svg/гладить утюгом.svg' width={30} height={30}></Image>Гладить утюгом не выше 100°C, с
-										внутренней стороны изделия
+										<Image alt='' className='modal-icon' src='/svg/iron.svg' width={30} height={30}></Image>Гладить утюгом не выше 100°C, с внутренней
+										стороны изделия
 									</p>
 								</div>
 							</div>
@@ -208,11 +207,11 @@ const ArticleProduct = ({ item, index }) => {
 									</div>
 								))}
 								<p onClick={() => setSizeModal(true)} className='modal-text-pluses'>
-									<Image alt='' className='modal-icon' src='/svg/линейка.svg' width={30} height={30}></Image>Размерная сетка
+									<Image alt='' className='modal-icon' src='/svg/sizeline.svg' width={30} height={30}></Image>Размерная сетка
 								</p>
 							</div>
 							<div onClick={handleSizeOverlayClick} className={`sizeModalOverlay ${sizeModal ? 'open' : ''}`}>
-								<Image alt='' src='/png/Размерная сетка.png' width={400} height={400}></Image>
+								<Image alt='' src='/png/sizeparam.png' width={400} height={400}></Image>
 							</div>
 							<p className='modal-text-color'>
 								<span>Цвет:</span> {item.details[indexInfo].color}
@@ -226,32 +225,32 @@ const ArticleProduct = ({ item, index }) => {
 								))}
 							</div>
 							<p className='modal-text-pluses border'>
-								<Image alt='' className='modal-icon' src='/svg/теплая ткань.svg' width={30} height={30}></Image>Теплая и мягкая ткань из
-								высококачественного хлопка
+								<Image alt='' className='modal-icon' src='/svg/warm.svg' width={30} height={30}></Image>Теплая и мягкая ткань из высококачественного
+								хлопка
 							</p>
 							<p className='modal-text-pluses'>
-								<Image alt='' className='modal-icon' src='/svg/оверсайз.svg' width={30} height={30}></Image>Оверсайз крой
+								<Image alt='' className='modal-icon' src='/svg/oversize.svg' width={30} height={30}></Image>Оверсайз крой
 							</p>
 							<p className='modal-text-pluses'>
-								<Image alt='' className='modal-icon' src='/svg/вышивка.svg' width={30} height={30}></Image>Вышивка на передней и задней стороне
+								<Image alt='' className='modal-icon' src='/svg/embroidery.svg' width={30} height={30}></Image>Вышивка на передней и задней стороне
 							</p>
 							<p className='modal-text-pluses'>
-								<Image alt='' className='modal-icon' src='/svg/изготовление.svg' width={30} height={30}></Image>Изготовление в течение 3-7 дней
+								<Image alt='' className='modal-icon' src='/svg/production.svg' width={30} height={30}></Image>Изготовление в течение 3-7 дней
 							</p>
 
 							<p className='modal-text-pluses'>
-								<Image alt='' className='modal-icon' src='/svg/скидка (2).svg' width={30} height={30}></Image>Скидка 15% на первый заказ всем
+								<Image alt='' className='modal-icon' src='/svg/discounttwo.svg' width={30} height={30}></Image>Скидка 15% на первый заказ всем
 								студентам МГУ
 							</p>
 							<p className='modal-text-pluses'>
-								<Image alt='' className='modal-icon' src='/svg/создано студентами (2).svg' width={30} height={30}></Image>Создано студентами МГУ
+								<Image alt='' className='modal-icon' src='/svg/bystudents.svg' width={30} height={30}></Image>Создано студентами МГУ
 							</p>
 							<p className='modal-text-pluses'>
-								<Image alt='' className='modal-icon' src='/svg/вся прибыль.svg' width={30} height={30}></Image>Вся прибыль реинвестируется в зарплаты
+								<Image alt='' className='modal-icon' src='/svg/tr.svg' width={30} height={30}></Image>Вся прибыль реинвестируется в зарплаты
 								студентов, финансовую помощь и развитие проекта
 							</p>
 							<p className='modal-text-pluses'>
-								<Image alt='' className='modal-icon' src='/svg/доставка (2).svg' width={30} height={30}></Image>Доставка по всему миру
+								<Image alt='' className='modal-icon' src='/svg/delivertwo.svg' width={30} height={30}></Image>Доставка по всему миру
 							</p>
 
 							<Link onClick={() => setOfferData(offerDataItem)} className='offerBtn' href='/offer'>
