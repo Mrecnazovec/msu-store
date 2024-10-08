@@ -1,14 +1,15 @@
 .refund {
 	padding-block: calc(var(--section-padding-y) * 2);
+	font-family: 'IBX Plex Sans';
 
 	.refundContent {
 		max-width: 1060px;
 		margin: auto;
 		h1 {
 			text-align: center;
-			font-weight: 600;
-			margin: 0;
+			font-family: 'Moscow University';
 			margin-bottom: var(--margin-base);
+			color: var(--color-blue);
 		}
 
 		.refund-text-box {
