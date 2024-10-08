@@ -21,7 +21,7 @@ const PreviewSliderItem = ({ data }) => {
 				<Flickity className='Slider' elementType='div' disableImagesLoaded={false} options={flickityOptions} reloadOnUpdate static>
 					{imgPath.map((item, index) => (
 						<div key={index} className='slider-preview'>
-							<Image alt='' src={`/jpg/${item}`} width={380} height={490}></Image>
+							<Image quality={100} alt='' src={`/jpg/${item}`} width={380} height={490}></Image>
 						</div>
 					))}
 				</Flickity>

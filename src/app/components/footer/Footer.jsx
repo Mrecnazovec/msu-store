@@ -63,16 +63,18 @@ const Footer = () => {
 						</Link>
 					</div>
 				</div>
-				<div className="copyright">
-					<p>©2022-2024 MSU STORE™</p>
-					<Link href=''>Политика возврата средств</Link>
-					<Link href=''>Политика конфиденциальности</Link>
-					<Link href=''>Условия обслуживания</Link>
-					<Link href=''>Политика доставки</Link>
+				<div className='copyright'>
+					<Link href=''>О нас</Link>
+					<Link href=''>Часто задаваемые вопросы</Link>
+					<Link href=''>Купить подарочную карту</Link>
+					<Link href=''>Оптовые заказы</Link>
 				</div>
-				<div className="copyright">
-					<Link href='tel:+998330331023'>+998 (33) 033-10-23</Link>
-					<Link href='mailto:msustore@gmail.com'>msustore@gmail.com</Link>
+				<div className='copyright'>
+					<p>©2022-2024 MSU STORE™</p>
+					<Link href=''>Доставка</Link>
+					<Link href='/pages/refund-policy'>Политика возврата средств</Link>
+					<Link href='/pages/public-offer'>Публичная оферта</Link>
+					<Link href='/pages/privacy-policy'>Политика конфиденциальности</Link>
 				</div>
 			</div>
 		</footer>

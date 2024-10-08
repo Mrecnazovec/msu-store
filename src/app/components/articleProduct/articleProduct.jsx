@@ -75,7 +75,7 @@ const ArticleProduct = ({ item, index }) => {
 			<div onClick={() => setIsOpen(true)} className='product-content'>
 				<Image alt='' src={imgPath} height={380} width={380}></Image>
 				<div className='product-article-body'>
-					<p>{item.title}</p>
+					<h3 className='h3'>{item.title}</h3>
 					<div className='choose-color-pic'>
 						{item.details.map((item, index) => (
 							<div onMouseEnter={() => handleColor(index)} key={index} className={`color-box circle-pic ${indexInfo == index ? 'active' : ''}`}>
@@ -135,17 +135,17 @@ const ArticleProduct = ({ item, index }) => {
 						</div>
 					</div>
 					<div className='modal-text'>
-						<h3 className='modal-text-title'>{item.title}</h3>
+						<h2 className='modal-text-title'>{item.title}</h2>
 
 						<div className='price-box'>
-							<h3 className='modal-text-price'>
+							<p className='modal-text-price'>
 								{currency == 'Uzb'
 									? item.price[0].price + ' ' + item?.price[0].currency
 									: currency == 'Ru'
 									? item.price[1].price + ' ' + item?.price[1].currency
 									: item.price[2].price + ' ' + '$'}
-							</h3>
-							<h3 className='modal-text-price'>
+							</p>
+							<p className='modal-text-price'>
 								{currency == 'Uzb'
 									? String(Number(item.price[0].price.replace('.', '') * 0.85).toLocaleString('de-DE')) + ' ' + item?.price[0].currency
 									: currency == 'Ru'
@@ -157,7 +157,7 @@ const ArticleProduct = ({ item, index }) => {
 									  ) +
 									  ' ' +
 									  '$'}
-							</h3>
+							</p>
 						</div>
 						<p className='modal-text-description'>{item.description}</p>
 						<div onClick={handleDropDown} className={`dropDownDesc ${ddIsOpen ? 'open' : ''}`}>

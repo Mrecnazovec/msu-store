@@ -1,0 +1,27 @@
+.refund {
+	padding-block: calc(var(--section-padding-y) * 2);
+
+	.refundContent {
+		max-width: 1060px;
+		margin: auto;
+		h1 {
+			text-align: center;
+			font-weight: 600;
+			margin: 0;
+			margin-bottom: var(--margin-base);
+		}
+
+		.refund-text-box {
+			&:not(:last-child) {
+				margin-bottom: var(--margin-base);
+			}
+			h2 {
+				margin: 0;
+				font-weight: 600;
+			}
+			a {
+				color: var(--color-blue);
+			}
+		}
+	}
+}
