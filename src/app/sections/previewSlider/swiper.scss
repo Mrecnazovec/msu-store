@@ -212,4 +212,6 @@ a {
 .previewSlider {
 	padding-block: calc(var(--section-padding-y)*2);
 	margin-bottom: var(--margin-base);
+	max-height: 600px;
+	overflow: hidden;
 }

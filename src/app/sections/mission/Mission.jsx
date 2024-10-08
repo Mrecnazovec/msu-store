@@ -1,9 +1,15 @@
+'use client'
+
 import Image from 'next/image'
 import './mission.scss'
 
+
+
+
+
 const Mission = () => {
 	return (
-		<section className='mission'>
+		<section className='mission' data-aos='fade-down'>
 			<div className='container'>
 				<div className='mission-card'>
 					<Image alt='' src='/svg/discount.svg' width={30} height={30}></Image>

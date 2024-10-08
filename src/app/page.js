@@ -22,7 +22,7 @@ export default async function Home() {
 
 			<section id='shop' className='clothSection'>
 				<div className='container'>
-					<h2 id='hoodies'>Худи</h2>
+					<h2 data-aos='fade-down' id='hoodies'>Худи</h2>
 
 					<div className='cloth'>
 						{hoodiesData.map((item, index) => (

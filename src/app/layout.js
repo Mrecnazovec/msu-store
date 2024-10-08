@@ -1,5 +1,6 @@
 import Footer from './components/footer/Footer'
 import Header from './components/header/Header'
+import AOSProvider from './context/AOSprovider'
 import { GlobalCurrencyContext } from './context/CurrencyContext'
 import { GlobalOfferContext } from './context/offerContext'
 import './styles/styles.scss'
@@ -37,7 +38,7 @@ export default function RootLayout({ children }) {
 				<GlobalCurrencyContext>
 					<GlobalOfferContext>
 						<Header />
-						{children}
+						<AOSProvider>{children}</AOSProvider>
 						<Footer />
 					</GlobalOfferContext>
 				</GlobalCurrencyContext>

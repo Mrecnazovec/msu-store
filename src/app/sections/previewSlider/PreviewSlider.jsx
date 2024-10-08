@@ -16,7 +16,7 @@ const PreviewSliderItem = ({ data }) => {
 	const imgPath = data[0].imgPath
 
 	return (
-		<section className='previewSlider'>
+		<section className='previewSlider' data-aos="fade-down">
 			<div className='container container-p0'>
 				<Flickity className='Slider' elementType='div' disableImagesLoaded={false} options={flickityOptions} reloadOnUpdate static>
 					{imgPath.map((item, index) => (
