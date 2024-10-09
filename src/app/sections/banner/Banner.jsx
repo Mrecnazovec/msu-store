@@ -14,7 +14,7 @@ const Banner = ({ data }) => {
 		cellAlign: 'left',
 		pageDots: true,
 		arrowShape: 'M18.3333 11L3.66668 11M18.3333 11L14.6667 7.33334M18.3333 11L14.6667 14.6667 Z',
-		autoPlay: 3000,
+		autoPlay: 5000,
 		pauseAutoPlayOnHover: false,
 	}
 

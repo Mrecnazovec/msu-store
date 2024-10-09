@@ -37,7 +37,7 @@ export default async function Home() {
 		<main className='mainPage'>
 			<Banner data={bannerPath} />
 			<Hello />
-			<PreviewSlider />
+			{/* <PreviewSlider /> */}
 			<Mission />
 
 			<section id='shop' className='clothSection'>
