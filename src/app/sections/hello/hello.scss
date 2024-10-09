@@ -37,7 +37,7 @@
 
 				@include fluid-text(46, 20);
 
-				@include mobile {
+				@include tablet {
 					margin-bottom: calc(var(--margin-base)/2);
 					font-family: 'IBM Plex sans';
 					font-weight: 600;
