@@ -5,12 +5,14 @@ import './header.scss'
 import { useState, useEffect } from 'react'
 import { useCurrencyContext } from '@/app/context/CurrencyContext'
 import Image from 'next/image'
+import { useRef } from 'react'
 
 const Header = () => {
 	const [activeIndex, setActiveIndex] = useState(null)
 	const [isOpen, setIsOpen] = useState(false)
 	const [isHeaderVisible, setIsHeaderVisible] = useState(true) // Новое состояние для видимости заголовка
 	const { currency, setCurrency } = useCurrencyContext()
+	const burgerBoxRef = useRef(null)
 
 	const listData = [
 		{
@@ -65,6 +67,12 @@ const Header = () => {
 		setIsOpen(!isOpen)
 	}
 
+	const handleOutsideClick = (event) => {
+		if (burgerBoxRef.current && !burgerBoxRef.current.contains(event.target)) {
+			setIsOpen(false)
+		}
+	}
+
 	// Обработчик события прокрутки
 	useEffect(() => {
 		let lastScrollY = window.scrollY
@@ -81,9 +89,11 @@ const Header = () => {
 		}
 
 		window.addEventListener('scroll', handleScroll)
+		document.addEventListener('mousedown', handleOutsideClick)
 
 		return () => {
 			window.removeEventListener('scroll', handleScroll)
+			document.removeEventListener('mousedown', handleOutsideClick)
 		}
 	}, [])
 
@@ -196,7 +206,7 @@ const Header = () => {
 					</div>
 					
 				</nav>
-				<div className={`header-list burger-box visible-tablet ${isOpen ? 'open' : ''}`}>
+				<div  ref={burgerBoxRef} className={`header-list burger-box visible-tablet ${isOpen ? 'open' : ''}`}>
 					<ul>
 						{listData.map((item, index) => (
 							<li
