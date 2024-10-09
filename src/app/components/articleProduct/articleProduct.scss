@@ -88,7 +88,7 @@
 	.price-box {
 		display: flex;
 		gap: calc(var(--margin-base) / 2);
-		font-family: 'IBX Plex Sans';
+		font-family: 'IBM Plex Sans';
 
 		@include mobile-s {
 			gap: 5px;
