@@ -100,7 +100,8 @@ const ArticleProduct = ({ item, index }) => {
 							</p>
 							<p className='product-price'>
 								{currency == 'Uzb'
-									? String(Number(item.price[0].price.replace('.', '') * 0.85).toLocaleString('de-DE')) + ' ' + item?.price[0].currency
+									? String((Math.round((Number(item.price[0].price.replace('.', '')) * 0.85) / 1000) * 1000).toLocaleString('de-DE')) +
+									' ' + item?.price[0].currency
 									: currency == 'Ru'
 									? String(Number(item.price[1].price.replace('.', '') * 0.85).toLocaleString('de-DE')) + ' ' + item?.price[1].currency
 									: String(
@@ -157,7 +158,8 @@ const ArticleProduct = ({ item, index }) => {
 								</p>
 								<p className='modal-text-price'>
 									{currency == 'Uzb'
-										? String(Number(item.price[0].price.replace('.', '') * 0.85).toLocaleString('de-DE')) + ' ' + item?.price[0].currency
+										? String((Math.round((Number(item.price[0].price.replace('.', '')) * 0.85) / 1000) * 1000).toLocaleString('de-DE')) +
+									  ' ' + item?.price[0].currency
 										: currency == 'Ru'
 										? String(Number(item.price[1].price.replace('.', '') * 0.85).toLocaleString('de-DE')) + ' ' + item?.price[1].currency
 										: String(
@@ -230,34 +232,6 @@ const ArticleProduct = ({ item, index }) => {
 									</div>
 								))}
 							</div>
-							<p className='modal-text-pluses border'>
-								<Image alt='' className='modal-icon' src='/svg/warm.svg' width={30} height={30}></Image>Теплая и мягкая ткань из высококачественного
-								хлопка
-							</p>
-							<p className='modal-text-pluses'>
-								<Image alt='' className='modal-icon' src='/svg/oversize.svg' width={30} height={30}></Image>Оверсайз крой
-							</p>
-							<p className='modal-text-pluses'>
-								<Image alt='' className='modal-icon' src='/svg/embroidery.svg' width={30} height={30}></Image>Вышивка на передней и задней стороне
-							</p>
-							<p className='modal-text-pluses'>
-								<Image alt='' className='modal-icon' src='/svg/production.svg' width={30} height={30}></Image>Изготовление в течение 3-7 дней
-							</p>
-
-							<p className='modal-text-pluses'>
-								<Image alt='' className='modal-icon' src='/svg/discounttwo.svg' width={30} height={30}></Image>Скидка 15% на первый заказ всем
-								студентам МГУ
-							</p>
-							<p className='modal-text-pluses'>
-								<Image alt='' className='modal-icon' src='/svg/bystudents.svg' width={30} height={30}></Image>Создано студентами МГУ
-							</p>
-							<p className='modal-text-pluses'>
-								<Image alt='' className='modal-icon' src='/svg/tr.svg' width={30} height={30}></Image>Вся прибыль реинвестируется в зарплаты
-								студентов, финансовую помощь и развитие проекта
-							</p>
-							<p className='modal-text-pluses'>
-								<Image alt='' className='modal-icon' src='/svg/delivertwo.svg' width={30} height={30}></Image>Доставка по всему миру
-							</p>
 							<div className='count-box'>
 								{count == 1 ? (
 									<p className='disabled countCalc'>
@@ -295,6 +269,35 @@ const ArticleProduct = ({ item, index }) => {
 									</svg>
 								</p>
 							</div>
+							<p className='modal-text-pluses border'>
+								<Image alt='' className='modal-icon' src='/svg/warm.svg' width={30} height={30}></Image>Теплая и мягкая ткань из высококачественного
+								хлопка
+							</p>
+							<p className='modal-text-pluses'>
+								<Image alt='' className='modal-icon' src='/svg/oversize.svg' width={30} height={30}></Image>Оверсайз крой
+							</p>
+							<p className='modal-text-pluses'>
+								<Image alt='' className='modal-icon' src='/svg/embroidery.svg' width={30} height={30}></Image>Вышивка на передней и задней стороне
+							</p>
+							<p className='modal-text-pluses'>
+								<Image alt='' className='modal-icon' src='/svg/production.svg' width={30} height={30}></Image>Изготовление в течение 3-7 дней
+							</p>
+
+							<p className='modal-text-pluses'>
+								<Image alt='' className='modal-icon' src='/svg/discounttwo.svg' width={30} height={30}></Image>Скидка 15% на первый заказ всем
+								студентам МГУ
+							</p>
+							<p className='modal-text-pluses'>
+								<Image alt='' className='modal-icon' src='/svg/bystudents.svg' width={30} height={30}></Image>Создано студентами МГУ
+							</p>
+							<p className='modal-text-pluses'>
+								<Image alt='' className='modal-icon' src='/svg/tr.svg' width={30} height={30}></Image>Вся прибыль реинвестируется в зарплаты
+								студентов, финансовую помощь и развитие проекта
+							</p>
+							<p className='modal-text-pluses'>
+								<Image alt='' className='modal-icon' src='/svg/delivertwo.svg' width={30} height={30}></Image>Доставка по всему миру
+							</p>
+
 							<Link onClick={() => setOfferData(offerDataItem)} className='offerBtn' href='/offer'>
 								Заказать
 							</Link>

@@ -62,6 +62,18 @@
 			@include fluid-text(20, 16);
 			text-transform: uppercase;
 			font-family: 'Moscow University';
+
+			@include mobile {
+				font-size: 26px;
+				height: 25px;
+
+			}
+
+			br {
+				@include mobile {
+					display: none;
+				}
+			}
 		}
 
 		@include hover {

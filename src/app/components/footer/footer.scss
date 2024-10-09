@@ -31,6 +31,12 @@
 		justify-content: space-between;
 		padding-bottom: calc(var(--margin-base)/2);
 
+		@include mobile-s {
+			flex-direction: column;
+			justify-content: center;
+			gap: calc(var(--margin-base)/2);
+		}
+
 	}
 
 	.soc1als {

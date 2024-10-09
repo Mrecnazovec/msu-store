@@ -16,7 +16,7 @@ export default async function Home() {
 
 	return (
 		<main className='mainPage'>
-			<Banner imgPath='/png/banner.png' />
+			<Banner imgPath='/svg/banner.svg' />
 			<Hello />
 			<PreviewSlider />
 			<Mission />
