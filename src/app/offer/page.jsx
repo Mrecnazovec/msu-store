@@ -17,8 +17,6 @@ const page = () => {
 	const [ready, setReady] = useState(false)
 	const [error, setError] = useState('')
 
-	
-
 	const sendToTelegram = async (data) => {
 		const token = '7526799764:AAFmZWYKs_Nw55qE8b9F70O5dbtGwpSDW3M'
 		const chatId = '-1002453789209'
@@ -57,7 +55,7 @@ const page = () => {
 			window.scrollTo({
 				top: 0,
 				behavior: 'smooth',
-			});
+			})
 		} catch (error) {
 			setError('Ошибка:', error)
 		}
@@ -76,7 +74,8 @@ const page = () => {
 
 				currency == 'Uzb'
 					? String((Math.round((Number(offerData[4][0].price.replace('.', '')) * 0.85) / 1000) * 1000).toLocaleString('de-DE')) +
-					' ' + offerData[4][0].currency
+					  ' ' +
+					  offerData[4][0].currency
 					: currency == 'Ru'
 					? String(Number(offerData[4][1].price.replace('.', '') * 0.85).toLocaleString('de-DE')) + ' ' + offerData[4][1].currency
 					: String(
@@ -95,13 +94,16 @@ const page = () => {
 		return (
 			<main className='nullOffer'>
 				<div className='container'>
+					<h2>Заявка принята!</h2>
 					<p>
-						Заявка принята. В ближайшее время с Вами свяжется наш менеджер для завершения заказа! Если этого не произошло, пожалуйста, свяжитесь с{' '}
+						В ближайшее время с Вами свяжется наш менеджер для завершения заказа! Если этого не произошло, пожалуйста, свяжитесь с{' '}
 						<Link target='_blank' href='https://t.me/msustoremanager'>
 							t.me/msustoremanager
 						</Link>
 					</p>
-					<Link href='/#shop'>Вернуться к каталогу</Link>
+					<Link className='toShop' href='/#shop'>
+						Вернуться к каталогу
+					</Link>
 				</div>
 			</main>
 		)

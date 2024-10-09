@@ -77,7 +77,10 @@ const ArticleProduct = ({ item, index }) => {
 				<div onClick={() => setIsOpen(true)} className='product-content'>
 					<Image alt='' src={imgPath} height={380} width={380}></Image>
 					<div className='product-article-body'>
-						<h3 className='p'>{item.title}</h3>
+						<div className='title-modal-box'>
+							<h3 className='p'>{item.subCategories}</h3>
+							<h3 className='p'>{item.title}</h3>
+						</div>
 						<div className='choose-color-pic'>
 							{item.details.map((item, index) => (
 								<div
@@ -101,7 +104,8 @@ const ArticleProduct = ({ item, index }) => {
 							<p className='product-price'>
 								{currency == 'Uzb'
 									? String((Math.round((Number(item.price[0].price.replace('.', '')) * 0.85) / 1000) * 1000).toLocaleString('de-DE')) +
-									' ' + item?.price[0].currency
+									  ' ' +
+									  item?.price[0].currency
 									: currency == 'Ru'
 									? String(Number(item.price[1].price.replace('.', '') * 0.85).toLocaleString('de-DE')) + ' ' + item?.price[1].currency
 									: String(
@@ -146,7 +150,10 @@ const ArticleProduct = ({ item, index }) => {
 							</div>
 						</div>
 						<div className='modal-text'>
-							<h2 className='modal-text-title'>{item.title}</h2>
+							<div className='title-modal-box'>
+								<h2 className='modal-text-title'>{item.subCategories}</h2>
+								<h2 className='modal-text-title'>{item.title}</h2>
+							</div>
 
 							<div className='price-box'>
 								<p className='modal-text-price'>
@@ -159,7 +166,8 @@ const ArticleProduct = ({ item, index }) => {
 								<p className='modal-text-price'>
 									{currency == 'Uzb'
 										? String((Math.round((Number(item.price[0].price.replace('.', '')) * 0.85) / 1000) * 1000).toLocaleString('de-DE')) +
-									  ' ' + item?.price[0].currency
+										  ' ' +
+										  item?.price[0].currency
 										: currency == 'Ru'
 										? String(Number(item.price[1].price.replace('.', '') * 0.85).toLocaleString('de-DE')) + ' ' + item?.price[1].currency
 										: String(

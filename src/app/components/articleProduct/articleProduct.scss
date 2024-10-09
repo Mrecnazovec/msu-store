@@ -39,6 +39,16 @@
 		height: auto;
 	}
 
+	.title-modal-box {
+		display: flex;
+		gap: 3px;
+
+		@include mobile {
+			flex-direction: column;
+			gap: 0px;
+		}
+	}
+
 	p {
 		text-align: center;
 		margin-bottom: 0;
@@ -320,6 +330,14 @@
 			gap: calc(var(--margin-base) / 2);
 			padding-bottom: var(--margin-base);
 			overflow-y: scroll;
+
+			.title-modal-box {
+				gap: 5px;
+
+				@include mobile {
+					flex-direction: column;
+				}
+			}
 
 			@include mobile {
 				overflow-y: visible;

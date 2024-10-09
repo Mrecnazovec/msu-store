@@ -12,7 +12,7 @@ export default async function Home() {
 	const { data, errMsg } = await getProduct()
 
 	const hoodiesData = data.filter((item) => item.subCategories === 'Худи')
-	const tShirtData = data.filter((item) => item.subCategories === 'Футболки')
+	const tShirtData = data.filter((item) => item.subCategories === 'Футболка')
 
 	const bannerPath = [
 		{
