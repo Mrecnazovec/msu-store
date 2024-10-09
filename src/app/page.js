@@ -34,7 +34,7 @@ export default async function Home() {
 					</div>
 				</div>
 				<div className='product container'>
-					<h2 data-aos='fade-down' id='hoodies'>
+					<h2 data-aos='fade-down' id='tShirt'>
 						Футболки
 					</h2>
 

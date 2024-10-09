@@ -2,7 +2,7 @@
 @import '/src/app/styles/media';
 
 .footer {
-	background-color: var(--color-blue);
+	background-color: var(--color-dark-blue);
 	padding-block: var(--section-padding-y);
 	font-family: 'IBM Plex Sans';
 
@@ -53,14 +53,14 @@
 		gap: 15px;
 
 		p {
-			@include fluid-text(16, 14);
+			@include fluid-text(18, 16);
 			margin: 0;
 			color: var(--color-white);
 		}
 
 		a{
 
-			@include fluid-text(16, 14);
+			@include fluid-text(18, 16);
 		}
 	}
 }

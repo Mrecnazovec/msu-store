@@ -2,13 +2,11 @@
 @import '/src/app/styles/mixins';
 
 .mission {
-	padding-block: calc(var(--section-padding-y) * 2);
-	background-color: var(--color-blue);
 
 	.container {
 		display: grid;
 		grid-template-columns: repeat(4, 1fr);
-		gap: var(--margin-base);
+		padding: 0;
 
 		@include tablet {
 			grid-template-columns: repeat(2, 1fr);
@@ -21,14 +19,27 @@
 			display: flex;
 			align-items: center;
 			gap: calc(var(--margin-base) / 2);
+			padding: var(--margin-base);
+
+			&:nth-child(1) {
+				background-color: var(--color-dark-blue);
+			}
+			&:nth-child(2) {
+				background-color: var(--color-light-blue);
+			}
+			&:nth-child(3) {
+				background-color: var(--color-violet);
+			}
+			&:nth-child(4) {
+				background-color: var(--color-blue);
+			}
 
 			p {
 				@include fluid-text(16, 14);
 				color: var(--color-white);
-				text-align: center;
+				font-family: 'IBX Plex Sans';
 
 				@include tablet {
-					text-align: left;
 
 				}
 			}

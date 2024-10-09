@@ -15,15 +15,15 @@ const Header = () => {
 	const listData = [
 		{
 			title: 'Одежда',
-			href: '#hoodies',
+			href: '/#shop',
 			links: [
 				{
 					title: 'Худи',
-					href: '#hoodies',
+					href: '/#hoodies',
 				},
 				{
 					title: 'Футболки',
-					href: '/',
+					href: '/#tShirt',
 				},
 			],
 		},
@@ -87,6 +87,19 @@ const Header = () => {
 		}
 	}, [])
 
+	useEffect(() => {
+		if (isOpen) {
+			document.body.style.overflow = 'hidden'
+		} else {
+			document.body.style.overflow = ''
+		}
+
+		// Возвращаем скролл при размонтировании компонента
+		return () => {
+			document.body.style.overflow = ''
+		}
+	}, [isOpen])
+
 	return (
 		<header className={`header ${isHeaderVisible ? 'visible' : 'hidden'}`}>
 			{' '}
@@ -94,9 +107,6 @@ const Header = () => {
 			<div className='container'>
 				<nav className='nav'>
 					<div className='topBox-nav'>
-						<div className='burger-pos visible-mobile'>
-							<div className={`burger ${isOpen ? 'open' : ''}`} onClick={toggleMenu}></div>
-						</div>
 						<Link href='/' className='header-logo'>
 							<svg width='36' height='36' viewBox='0 0 36 36' fill='none' xmlns='http://www.w3.org/2000/svg'>
 								<path
@@ -108,13 +118,16 @@ const Header = () => {
 								Msu <br /> store
 							</p>
 						</Link>
+						<div className='burger-pos visible-mobile'>
+							<div className={`burger ${isOpen ? 'open' : ''}`} onClick={toggleMenu}></div>
+						</div>
 
-						<ul className='header-list currency-list'>
+						<ul className='header-list currency-list hidden-mobile'>
 							<li
 								onMouseEnter={() => handleMouseEnter(111)}
 								onMouseLeave={handleMouseLeave}
 								onClick={() => handleClick(111)}
-								className={`dropdown ${activeIndex === 111 ? 'active' : ''}`}
+								className={`dropdown currency-dropdown ${activeIndex === 111 ? 'active' : ''}`}
 							>
 								<div className='currencyBox'>
 									<Image alt='' src={`/svg/${currency}.svg`} height={20} width={30}></Image>
@@ -182,76 +195,171 @@ const Header = () => {
 						))}
 					</ul>
 				</nav>
-				<ul className={`header-list burger-box visible-mobile ${isOpen ? 'open' : ''}`}>
-					{listData.map((item, index) => (
-						<li
-							key={index}
-							onMouseEnter={() => handleMouseEnter(index)}
-							onMouseLeave={handleMouseLeave}
-							onClick={() => handleClick(index)}
-							className={`dropdown ${activeIndex === index ? 'active' : ''}`}
-						>
-							<Link href={item.href}>
-								{item.title}
+				<div className={`header-list burger-box visible-mobile ${isOpen ? 'open' : ''}`}>
+					<ul>
+						{listData.map((item, index) => (
+							<li
+								key={index}
+								onMouseEnter={() => handleMouseEnter(index)}
+								onMouseLeave={handleMouseLeave}
+								onClick={() => handleClick(index)}
+								className={`dropdown ${activeIndex === index ? 'active' : ''}`}
+							>
+								<p>
+									<Link href={item.href}>{item.title}</Link>
+									{item.links && (
+										<svg width='20' height='21' viewBox='0 0 20 21' fill='none' xmlns='http://www.w3.org/2000/svg'>
+											<path
+												fillRule='evenodd'
+												clipRule='evenodd'
+												d='M10.637 12.7022C10.3144 13.0396 9.78676 13.044 9.45856 12.712L5.25627 8.46119C4.92806 8.12917 4.92353 7.58648 5.24616 7.24903C5.5688 6.9116 6.09641 6.9072 6.42464 7.2392L10.0326 10.8889L13.5792 7.17951C13.9018 6.84207 14.4295 6.83767 14.7577 7.16968C15.0859 7.50169 15.0904 8.04438 14.7678 8.38183L10.637 12.7022Z'
+												fill='white'
+											/>
+										</svg>
+									)}
+								</p>
+
 								{item.links && (
-									<svg width='20' height='21' viewBox='0 0 20 21' fill='none' xmlns='http://www.w3.org/2000/svg'>
+									<div className='dropdown-item'>
+										{item.links.map((item, index) => (
+											<Link key={index} href={item.href}>
+												{item.title}
+											</Link>
+										))}
+									</div>
+								)}
+							</li>
+						))}
+
+						<li
+							onMouseEnter={() => handleMouseEnter(111)}
+							onMouseLeave={handleMouseLeave}
+							onClick={() => handleClick(111)}
+							className={`dropdown ${activeIndex === 111 ? 'active' : ''}`}
+						>
+							<div className='currencyBox'>
+								<div>
+									<Image alt='' src={`/svg/${currency}.svg`} height={20} width={30}></Image>
+									<p>{currency == 'Uzb' ? 'Узбекистан' : currency == 'Ru' ? 'Россия' : 'Другая'}</p>
+								</div>
+								<svg width='20' height='21' viewBox='0 0 20 21' fill='none' xmlns='http://www.w3.org/2000/svg'>
+									<path
+										fillRule='evenodd'
+										clipRule='evenodd'
+										d='M10.637 12.7022C10.3144 13.0396 9.78676 13.044 9.45856 12.712L5.25627 8.46119C4.92806 8.12917 4.92353 7.58648 5.24616 7.24903C5.5688 6.9116 6.09641 6.9072 6.42464 7.2392L10.0326 10.8889L13.5792 7.17951C13.9018 6.84207 14.4295 6.83767 14.7577 7.16968C15.0859 7.50169 15.0904 8.04438 14.7678 8.38183L10.637 12.7022Z'
+										fill='white'
+									/>
+								</svg>
+							</div>
+
+							<div className='dropdown-item'>
+								<div onClick={() => setCurrency('Uzb')} className={`currencyBox dropdown-currency ${currency == 'Uzb' && 'none'}`}>
+									<Image alt='' src='/svg/Uzb.svg' height={20} width={30}></Image>
+									<p>Узбекистан</p>
+								</div>
+								<div onClick={() => setCurrency('Ru')} className={`currencyBox dropdown-currency ${currency == 'Ru' && 'none'}`}>
+									<Image alt='' src='/svg/Ru.svg' height={20} width={30}></Image>
+									<p>Россия</p>
+								</div>
+								<div onClick={() => setCurrency('Usd')} className={`currencyBox dropdown-currency ${currency == 'Usd' && 'none'}`}>
+									<Image alt='' src='/svg/Usd.svg' height={20} width={30}></Image>
+									<p>Другая</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<ul className='burger-dark-box'>
+						<li className='dropdown'>
+							<Link href=''>Часто задаваемые вопросы</Link>
+						</li>
+						<li className='dropdown'>
+							<Link href=''>Купить подарочную карту</Link>
+						</li>
+						<li className='dropdown'>
+							<Link href=''>Оптовые заказы</Link>
+						</li>
+
+						<li className='dropdown'>
+							<Link href=''>Доставка</Link>
+						</li>
+
+						<li className='dropdown dropdown-soc1als'>
+							<Link target='_blank' href='https://www.instagram.com/store.msu/'>
+								<svg width='30' height='30' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
+									<g clipPath='url(#clip0_32_952)'>
 										<path
 											fillRule='evenodd'
 											clipRule='evenodd'
-											d='M10.637 12.7022C10.3144 13.0396 9.78676 13.044 9.45856 12.712L5.25627 8.46119C4.92806 8.12917 4.92353 7.58648 5.24616 7.24903C5.5688 6.9116 6.09641 6.9072 6.42464 7.2392L10.0326 10.8889L13.5792 7.17951C13.9018 6.84207 14.4295 6.83767 14.7577 7.16968C15.0859 7.50169 15.0904 8.04438 14.7678 8.38183L10.637 12.7022Z'
+											d='M10 15C12.7614 15 15 12.7614 15 10C15 7.23857 12.7614 5 10 5C7.23857 5 5 7.23857 5 10C5 12.7614 7.23857 15 10 15ZM10 13.3333C11.8409 13.3333 13.3333 11.8409 13.3333 10C13.3333 8.15905 11.8409 6.66667 10 6.66667C8.15905 6.66667 6.66667 8.15905 6.66667 10C6.66667 11.8409 8.15905 13.3333 10 13.3333Z'
 											fill='white'
 										/>
-									</svg>
-								)}
+										<path
+											d='M15 4.1665C14.5398 4.1665 14.1667 4.5396 14.1667 4.99984C14.1667 5.46007 14.5398 5.83317 15 5.83317C15.4603 5.83317 15.8333 5.46007 15.8333 4.99984C15.8333 4.5396 15.4603 4.1665 15 4.1665Z'
+											fill='white'
+										/>
+										<path
+											fillRule='evenodd'
+											clipRule='evenodd'
+											d='M1.37829 3.56355C0.833328 4.6331 0.833328 6.03324 0.833328 8.8335V11.1668C0.833328 13.9671 0.833328 15.3672 1.37829 16.4367C1.85766 17.3776 2.62256 18.1425 3.56338 18.6218C4.63294 19.1668 6.03307 19.1668 8.83333 19.1668H11.1667C13.9669 19.1668 15.3671 19.1668 16.4366 18.6218C17.3774 18.1425 18.1423 17.3776 18.6217 16.4367C19.1667 15.3672 19.1667 13.9671 19.1667 11.1668V8.8335C19.1667 6.03324 19.1667 4.6331 18.6217 3.56355C18.1423 2.62273 17.3774 1.85783 16.4366 1.37846C15.3671 0.833496 13.9669 0.833496 11.1667 0.833496H8.83333C6.03307 0.833496 4.63294 0.833496 3.56338 1.37846C2.62256 1.85783 1.85766 2.62273 1.37829 3.56355ZM11.1667 2.50016H8.83333C7.4057 2.50016 6.4352 2.50146 5.68506 2.56275C4.95436 2.62245 4.5807 2.73065 4.32003 2.86347C3.69282 3.18305 3.18289 3.69299 2.8633 4.3202C2.73049 4.58086 2.62228 4.95453 2.56258 5.68523C2.50129 6.43537 2.49999 7.40586 2.49999 8.8335V11.1668C2.49999 12.5945 2.50129 13.5649 2.56258 14.3151C2.62228 15.0458 2.73049 15.4195 2.8633 15.6802C3.18289 16.3073 3.69282 16.8172 4.32003 17.1368C4.5807 17.2697 4.95436 17.3779 5.68506 17.4376C6.4352 17.4988 7.4057 17.5002 8.83333 17.5002H11.1667C12.5943 17.5002 13.5647 17.4988 14.3149 17.4376C15.0457 17.3779 15.4193 17.2697 15.68 17.1368C16.3072 16.8172 16.8171 16.3073 17.1367 15.6802C17.2695 15.4195 17.3777 15.0458 17.4374 14.3151C17.4987 13.5649 17.5 12.5945 17.5 11.1668V8.8335C17.5 7.40586 17.4987 6.43537 17.4374 5.68523C17.3777 4.95453 17.2695 4.58086 17.1367 4.3202C16.8171 3.69299 16.3072 3.18305 15.68 2.86347C15.4193 2.73065 15.0457 2.62245 14.3149 2.56275C13.5647 2.50146 12.5943 2.50016 11.1667 2.50016Z'
+											fill='white'
+										/>
+									</g>
+									<defs>
+										<clipPath id='clip0_32_952'>
+											<rect width='20' height='20' fill='white' />
+										</clipPath>
+									</defs>
+								</svg>
 							</Link>
-
-							{item.links && (
-								<div className='dropdown-item'>
-									{item.links.map((item, index) => (
-										<Link key={index} href={item.href}>
-											{item.title}
-										</Link>
-									))}
-								</div>
-							)}
+							<Link target='_blank' href=''>
+								<svg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'>
+									<g clipPath='url(#clip0_129_20)'>
+										<path
+											d='M24.0174 16.049L29.982 7.03125H20.8346L20.6638 7.69295C20.2255 9.39171 19.4029 11.694 17.9736 13.0156C17.7969 13.1788 17.6296 13.3099 17.4755 13.415V7.03125H9.5084V8.79501H10.2527V12.7924C9.35963 12.0069 8.23742 10.508 7.94354 7.81746L7.85771 7.03125H0L0.269851 8.12439C1.24008 12.0557 2.69553 15.2763 4.59616 17.6967C6.14774 19.6729 7.99573 21.1237 10.0886 22.0088C11.9577 22.7994 13.6786 22.9932 14.9169 22.9932C16.0558 22.9932 16.7861 22.8291 16.8475 22.8149L17.5192 22.6584L17.554 20.2354L20.5457 22.8381H30.0001L24.0174 16.049ZM15.8445 16.4108L15.7763 21.189C14.7914 21.2766 12.8402 21.2801 10.6869 20.3465C8.88859 19.5667 7.29123 18.2897 5.93923 16.5509C4.39085 14.5596 3.15901 11.9543 2.2705 8.79501H6.30041C7.17267 13.8538 10.6821 15.1627 10.8384 15.2184L12.0165 15.6386V8.79501H15.712V15.6473L16.6399 15.5988C16.7527 15.5928 17.7774 15.5111 18.9875 14.474C20.3624 13.2955 21.4384 11.3871 22.1905 8.79501H26.7008L21.8014 16.2019L26.0949 21.0741H21.2054L15.8445 16.4108Z'
+											fill='white'
+										/>
+									</g>
+									<defs>
+										<clipPath id='clip0_129_20'>
+											<rect width='30' height='30' fill='white' />
+										</clipPath>
+									</defs>
+								</svg>
+							</Link>
+							<Link target='_blank' href='https://t.me/msu_store'>
+								<svg width='30' height='30' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'>
+									<g clipPath='url(#clip0_32_948)'>
+										<path
+											d='M16.1004 18.9447C15.9442 18.9447 15.789 18.8984 15.6559 18.8082L10.6271 15.397L7.92995 17.3378C7.71842 17.4899 7.44577 17.5282 7.20014 17.4404C6.95482 17.3523 6.76852 17.1491 6.70202 16.8972L5.34774 11.7648L0.508736 9.91455C0.204101 9.79802 0.00206725 9.50658 -0.000149426 9.18041C-0.0023661 8.85424 0.195657 8.56006 0.498813 8.43941L18.8985 1.11805C18.982 1.08258 19.0703 1.0621 19.1594 1.05661C19.1913 1.05471 19.2233 1.05471 19.255 1.05651C19.4396 1.06749 19.6208 1.14264 19.7622 1.28134C19.7769 1.2957 19.7908 1.31037 19.804 1.32568C19.9212 1.45952 19.9856 1.62271 19.9977 1.78896C20.0007 1.83076 20.0005 1.87309 19.9968 1.91542C19.9943 1.94561 19.9899 1.97569 19.9838 2.00556L16.878 18.3012C16.8281 18.563 16.6499 18.7821 16.4038 18.8842C16.3061 18.9247 16.203 18.9447 16.1004 18.9447ZM11.0687 13.7833L15.5481 16.8217L17.9647 4.14191L9.23663 12.5406L11.0475 13.769C11.0548 13.7736 11.0618 13.7784 11.0687 13.7833ZM7.33968 13.1076L7.93945 15.3802L9.23167 14.4504L7.53961 13.3026C7.46097 13.2494 7.39362 13.1831 7.33968 13.1076ZM2.96977 9.16025L6.29246 10.4306C6.53049 10.5216 6.71015 10.7217 6.77517 10.9681L7.19655 12.5651C7.21587 12.3809 7.29936 12.2075 7.435 12.077L15.7516 4.07435L2.96977 9.16025Z'
+											fill='white'
+										/>
+									</g>
+									<defs>
+										<clipPath id='clip0_32_948'>
+											<rect width='20' height='20' fill='white' />
+										</clipPath>
+									</defs>
+								</svg>
+							</Link>
+							<Link target='_blank' href=''>
+								<svg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'>
+									<path
+										d='M14.9998 0C6.72898 0 0 6.72898 0 15C0 18.8267 1.4412 22.4705 4.05788 25.2602C4.51291 25.7453 5.27477 25.7697 5.75999 25.3146C6.24505 24.8596 6.26946 24.0976 5.81442 23.6125C3.6181 21.2709 2.40843 18.2122 2.40843 15C2.40843 8.05699 8.05699 2.40843 14.9998 2.40843C21.9429 2.40843 27.5916 8.05699 27.5916 15C27.5916 21.943 21.9429 27.5916 14.9998 27.5916C13.769 27.5916 12.5624 27.4164 11.4 27.0699L12.6317 22.2556C13.3937 22.4416 14.18 22.5361 14.9827 22.5361C20.0416 22.5361 24.1575 18.7382 24.1575 14.07C24.1575 9.40169 20.0416 5.60361 14.9827 5.60361C9.92368 5.60361 5.80784 9.40169 5.80784 14.07C5.80784 15.7522 6.3409 17.3778 7.34955 18.7708C7.73956 19.3095 8.49259 19.4301 9.03112 19.0399C9.5698 18.6499 9.69022 17.897 9.30022 17.3583C8.59102 16.3787 8.21627 15.2418 8.21627 14.07C8.21627 10.7297 11.2517 8.01203 14.9827 8.01203C18.7136 8.01203 21.7491 10.7297 21.7491 14.07C21.7491 17.4102 18.7138 20.1277 14.9827 20.1277C14.3831 20.1277 13.7963 20.059 13.2287 19.9227L14.9144 13.3334C15.0792 12.689 14.6904 12.0331 14.0463 11.8682C13.4019 11.7033 12.746 12.0921 12.5811 12.7364L8.79204 27.5471C8.64143 28.1357 8.95308 28.7444 9.51842 28.9665C11.2647 29.6522 13.1091 30 14.9998 30C23.271 30 30 23.271 30 15C30 6.72898 23.271 0 14.9998 0Z'
+										fill='white'
+									/>
+								</svg>
+							</Link>
+							<Link target='_blank' href=''>
+								<svg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'>
+									<path
+										d='M27.2305 6.58974C24.0816 6.58974 21.5197 4.02786 21.5197 0.878906C21.5197 0.393448 21.126 0 20.6408 0H15.9336C15.4482 0 15.0547 0.393448 15.0547 0.878906V20.1778C15.0547 22.029 13.5487 23.535 11.6972 23.535C9.84604 23.535 8.34 22.029 8.34 20.1778C8.34 18.3263 9.84604 16.8203 11.6972 16.8203C12.1827 16.8203 12.5761 16.4268 12.5761 15.9414V11.2342C12.5761 10.749 12.1827 10.3553 11.6972 10.3553C6.2812 10.3553 1.875 14.7617 1.875 20.1778C1.875 25.5938 6.2812 30 11.6972 30C17.1133 30 21.5197 25.5938 21.5197 20.1778V11.6352C23.269 12.5679 25.2155 13.0547 27.2305 13.0547C27.716 13.0547 28.1094 12.6613 28.1094 12.1758V7.46864C28.1094 6.98341 27.716 6.58974 27.2305 6.58974ZM26.3516 11.2605C24.4753 11.1044 22.6934 10.4489 21.1539 9.34158C20.8864 9.14886 20.5334 9.12231 20.2398 9.27292C19.9464 9.42307 19.7619 9.72519 19.7619 10.055V20.1778C19.7619 24.6245 16.144 28.2422 11.6972 28.2422C7.25052 28.2422 3.63281 24.6245 3.63281 20.1778C3.63281 16.0279 6.7836 12.5999 10.8183 12.1607V15.138C8.41507 15.556 6.58218 17.6566 6.58218 20.1778C6.58218 22.9983 8.87672 25.293 11.6972 25.293C14.518 25.293 16.8125 22.9983 16.8125 20.1778V1.75781H19.8132C20.2158 5.17502 22.9344 7.89368 26.3516 8.29628V11.2605Z'
+										fill='white'
+									/>
+								</svg>
+							</Link>
 						</li>
-					))}
-
-					{/* <li
-						onMouseEnter={() => handleMouseEnter(111)}
-						onMouseLeave={handleMouseLeave}
-						onClick={() => handleClick(111)}
-						className={`dropdown ${activeIndex === 111 ? 'active' : ''}`}
-					>
-						<div className='currencyBox'>
-							<Image alt='' src={`/svg/${currency}.svg`} height={20} width={30}></Image>
-							<p>{currency == 'Uzb' ? 'Узбекистан' : currency == 'Ru' ? 'Россия' : 'Другая'}</p>
-							<svg width='20' height='21' viewBox='0 0 20 21' fill='none' xmlns='http://www.w3.org/2000/svg'>
-								<path
-									fillRule='evenodd'
-									clipRule='evenodd'
-									d='M10.637 12.7022C10.3144 13.0396 9.78676 13.044 9.45856 12.712L5.25627 8.46119C4.92806 8.12917 4.92353 7.58648 5.24616 7.24903C5.5688 6.9116 6.09641 6.9072 6.42464 7.2392L10.0326 10.8889L13.5792 7.17951C13.9018 6.84207 14.4295 6.83767 14.7577 7.16968C15.0859 7.50169 15.0904 8.04438 14.7678 8.38183L10.637 12.7022Z'
-									fill='white'
-								/>
-							</svg>
-						</div>
-
-						<div className='dropdown-item'>
-							<div onClick={() => setCurrency('Uzb')} className={`currencyBox dropdown-currency ${currency == 'Uzb' && 'none'}`}>
-								<Image alt='' src='/svg/Uzb.svg' height={20} width={30}></Image>
-								<p>Узбекистан</p>
-							</div>
-							<div onClick={() => setCurrency('Ru')} className={`currencyBox dropdown-currency ${currency == 'Ru' && 'none'}`}>
-								<Image alt='' src='/svg/Ru.svg' height={20} width={30}></Image>
-								<p>Россия</p>
-							</div>
-							<div onClick={() => setCurrency('Usd')} className={`currencyBox dropdown-currency ${currency == 'Usd' && 'none'}`}>
-								<Image alt='' src='/svg/Usd.svg' height={20} width={30}></Image>
-								<p>Другая</p>
-							</div>
-						</div>
-					</li> */}
-				</ul>
+					</ul>
+				</div>
 			</div>
 		</header>
 	)

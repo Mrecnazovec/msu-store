@@ -18,11 +18,12 @@ const ArticleProduct = ({ item, index }) => {
 	const [sizeIndex, setSizeIndex] = useState(item.active)
 	const [ddIsOpen, setDdIsOpen] = useState(false)
 	const [sizeModal, setSizeModal] = useState(false)
+	const [count, setCount] = useState(1)
 
 	const [indexInfo, setIndexInfo] = useState(item.active)
 	const [indexPic, setIndexPic] = useState(item.active)
 
-	const offerDataItem = [item.title, imgPath, item.details[indexInfo].size[sizeIndex].title, item.details[indexInfo].color, item.price]
+	const offerDataItem = [item.title, imgPath, item.details[indexInfo].size[sizeIndex].title, item.details[indexInfo].color, item.price, count]
 
 	const handleColor = (index) => {
 		setImgPath(item.details[index].imgPath[0])
@@ -79,7 +80,12 @@ const ArticleProduct = ({ item, index }) => {
 						<h3 className='h3'>{item.title}</h3>
 						<div className='choose-color-pic'>
 							{item.details.map((item, index) => (
-								<div title={item.color} onMouseEnter={() => handleColor(index)} key={index} className={`color-box circle-pic ${indexInfo == index ? 'active' : ''}`}>
+								<div
+									title={item.color}
+									onMouseEnter={() => handleColor(index)}
+									key={index}
+									className={`color-box circle-pic ${indexInfo == index ? 'active' : ''}`}
+								>
 									<Image alt='' width={30} height={30} src={item.imgPath[0]}></Image>
 								</div>
 							))}
@@ -252,7 +258,43 @@ const ArticleProduct = ({ item, index }) => {
 							<p className='modal-text-pluses'>
 								<Image alt='' className='modal-icon' src='/svg/delivertwo.svg' width={30} height={30}></Image>Доставка по всему миру
 							</p>
-
+							<div className='count-box'>
+								{count == 1 ? (
+									<p className='disabled countCalc'>
+										<svg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'>
+											<path
+												d='M13.4092 9H1.59091C1.26473 9 1 8.328 1 7.49999C1 6.672 1.26473 6 1.59091 6H13.4092C13.7353 6 14 6.672 14 7.49999C14 8.328 13.7353 9 13.4092 9Z'
+												fill='black'
+											/>
+										</svg>
+									</p>
+								) : (
+									<p className='countCalc' onClick={() => setCount(count - 1)}>
+										<svg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'>
+											<path
+												d='M13.4092 9H1.59091C1.26473 9 1 8.328 1 7.49999C1 6.672 1.26473 6 1.59091 6H13.4092C13.7353 6 14 6.672 14 7.49999C14 8.328 13.7353 9 13.4092 9Z'
+												fill='black'
+											/>
+										</svg>
+									</p>
+								)}
+								<p>{count}</p>
+								<p className='countCalc' onClick={() => setCount(count + 1)}>
+									<svg width='15' height='15' viewBox='0 0 15 15' fill='none' xmlns='http://www.w3.org/2000/svg'>
+										<g clipPath='url(#clip0_130_36)'>
+											<path
+												d='M13.6339 6.1309H8.86481V1.3658C8.86481 0.611537 8.25625 0 7.50198 0C6.74772 0 6.13949 0.611537 6.13949 1.36613V6.1342H1.36811C0.613851 6.1342 0.000661976 6.74574 0.000992358 7.50033C0.000661976 7.8773 0.152968 8.22288 0.399763 8.46967C0.646889 8.71713 0.987843 8.8734 1.36448 8.8734H6.13949V13.6349C6.13949 14.0122 6.28915 14.3538 6.53628 14.6002C6.7834 14.8474 7.12337 15.0003 7.50066 15.0003C8.25459 15.0003 8.86481 14.3888 8.86481 13.6349V8.87307H13.6339C14.3881 8.87307 14.9997 8.25624 14.9993 7.50198C14.999 6.74805 14.3875 6.1309 13.6339 6.1309Z'
+												fill='black'
+											/>
+										</g>
+										<defs>
+											<clipPath id='clip0_130_36'>
+												<rect width='15' height='15' fill='white' />
+											</clipPath>
+										</defs>
+									</svg>
+								</p>
+							</div>
 							<Link onClick={() => setOfferData(offerDataItem)} className='offerBtn' href='/offer'>
 								Заказать
 							</Link>

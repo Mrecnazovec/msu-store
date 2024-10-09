@@ -27,6 +27,13 @@
 			input {
 				border-radius: var(--border-radius-small);
 				border: 1px solid var(--color-blue);
+				padding-left: 5px;
+				padding-block: 5px;
+				color: var(--color-blue);
+
+				&:focus {
+					outline: 1px solid var(--color-blue);
+				}
 			}
 		}
 		.btnSubmit {
@@ -55,9 +62,14 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	
+
 	div {
 		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+
 	}
 
 	p {

@@ -106,7 +106,6 @@
 			color: var(--color-blue);
 		}
 
-		
 		.modal-text-price {
 			font-weight: 600;
 
@@ -259,10 +258,7 @@
 		}
 
 		.price-box {
-
 			@include mobile {
-				
-
 				@include mobile-s {
 					flex-direction: row;
 				}
@@ -374,6 +370,28 @@
 				.modal-icon {
 					width: 30px;
 					height: 30px;
+				}
+			}
+
+			.count-box {
+				display: flex;
+				justify-content: space-between;
+				max-width: 130px;
+				padding: 10px 15px;
+				border: 1px solid var(--color-blue);
+				border-radius: var(--border-radius-small);
+				p {
+					@include fluid-text(20, 18);
+				}
+
+				.countCalc {
+				
+					@include fluid-text(20, 18);
+					cursor: pointer;
+
+					&.disabled {
+						opacity: 0.5;
+					}
 				}
 			}
 

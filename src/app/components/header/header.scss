@@ -2,7 +2,7 @@
 @import '/src/app/styles/mixins';
 
 .header {
-	background-color: var(--color-blue);
+	background-color: var(--color-dark-blue);
 	padding-block: 8px;
 	position: relative;
 	position: fixed;
@@ -41,6 +41,7 @@
 
 		@include mobile {
 			margin-bottom: 0;
+			justify-content: space-between;
 		}
 	}
 	.psevdoBurger {
@@ -83,6 +84,12 @@
 		justify-content: center;
 		height: 100%;
 
+		.dropdown-item {
+		}
+
+		.currency-dropdown {
+		}
+
 		.dropdown {
 			position: relative;
 
@@ -99,7 +106,7 @@
 			&-item {
 				width: 100%;
 				height: 0;
-				background-color: var(--color-blue);
+				background-color: var(--color-dark-blue);
 				position: absolute;
 				left: 0px;
 				overflow: hidden;
@@ -107,10 +114,10 @@
 				transition-duration: var(--transition-duration);
 				opacity: 0;
 				padding-inline: 25px;
-				display: flex;
 				flex-direction: column;
 				gap: calc(var(--margin-base) / 2);
-				padding-block: calc(var(--margin-base) / 2);
+				display: flex;
+				gap: calc(var(--margin-base) / 2);
 
 				@include tablet {
 					padding-inline: 10px;
@@ -122,6 +129,7 @@
 			.dropdown-item {
 				height: fit-content;
 				opacity: 1;
+				padding-block: calc(var(--margin-base) / 2);
 			}
 			svg {
 				transform: rotate(180deg);
@@ -129,7 +137,7 @@
 		}
 
 		a {
-			@include fluid-text(18, 14);
+			@include fluid-text(18, 16);
 			display: flex;
 			align-items: center;
 		}
@@ -137,15 +145,18 @@
 		.currencyBox {
 			color: var(--color-white);
 			display: flex;
-			gap: 3px;
+			gap: 5px;
 			width: 230px;
 
-			@include mobile {
-				width: fit-content;
-				z-index: 1000;
+			div {
+				display: flex;
+				gap: 5px;
 			}
 
-			
+			@include mobile {
+				width: 100%;
+				justify-content: space-between;
+			}
 
 			p {
 				margin-bottom: 0;
@@ -158,20 +169,26 @@
 		.dropdown-currency {
 			padding: 0;
 			cursor: pointer;
+			justify-content: flex-start;
 		}
 		.dropdown-currency.none {
 			display: none;
 		}
+		.dropdown-soc1als {
+			display: flex;
+			align-items: center;
+			gap: calc(var(--margin-base) / 2);
+		}
 	}
 
 	// Burger
-	.burger-pos {
-		position: absolute;
-		left: 0;
-	}
+	// .burger-pos {
+	// 	position: absolute;
+	// 	left: 0;
+	// }
 	.burger {
 		@include reset-button;
-		@include square(60px);
+		@include square(50px);
 		@include tablet-above {
 			display: none;
 		}
@@ -225,28 +242,57 @@
 		background-color: var(--color-blue);
 		position: absolute;
 		left: 0;
-		top: 52px;
+		top: 66px;
 		transition-timing-function: linear;
 		transition-duration: var(--transition-duration);
-		padding-inline: 25px;
 		display: flex;
 		flex-direction: column;
+		align-items: flex-start;
 		gap: calc(var(--margin-base) / 2);
-		padding-block: calc(var(--margin-base) / 2);
 		height: 0;
 		z-index: -1;
 
-		.dropdown {
+		ul {
+			list-style-type: none;
+			display: flex;
+			flex-direction: column;
+			gap: calc(var(--margin-base) / 2);
+			padding: 0;
+			margin: 0;
 			width: 100%;
+			padding-inline: 25px;
+			padding-top: calc(var(--margin-base) / 2);
 
-			&-item {
-				position: static;
-				display: none;
-			}
+			.dropdown {
+				width: 100%;
 
-			a {
-				width: fit-content;
+				&-item {
+					position: static;
+					background-color: var(--color-blue);
+					a {
+						width: fit-content;
+						font-size: 18px;
+					}
+				}
+
+				p {
+					display: flex;
+					align-items: center;
+					justify-content: space-between;
+					color: var(--color-white);
+					margin-bottom: 0;
+					font-size: 18px;
+
+					a {
+						width: fit-content;
+						font-size: 18px;
+					}
+				}
 			}
+		}
+		.burger-dark-box {
+			background-color: var(--color-dark-blue);
+			padding-block: calc(var(--margin-base) / 2);
 		}
 
 		.dropdown.active {
