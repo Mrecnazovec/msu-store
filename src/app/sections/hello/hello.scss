@@ -35,7 +35,14 @@
 				color: var(--color-blue);
 				font-family: 'Moscow University';
 
-				@include fluid-text(46, 20)
+				@include fluid-text(46, 20);
+
+				@include mobile {
+					margin-bottom: calc(var(--margin-base)/2);
+					font-family: 'IBM Plex sans';
+					font-weight: 600;
+					
+				}
 			}
 		}
 

@@ -17,7 +17,6 @@ const page = () => {
 	const [ready, setReady] = useState(false)
 	const [error, setError] = useState('')
 
-	console.log(offerData);
 	
 
 	const sendToTelegram = async (data) => {

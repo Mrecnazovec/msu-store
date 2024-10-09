@@ -7,8 +7,6 @@ import Flickity from 'react-flickity-component'
 import './swiper.scss'
 
 const Banner = ({ data }) => {
-	console.log(data)
-
 	const flickityOptions = {
 		initialIndex: 0,
 		cellAlign: 'left',
@@ -16,6 +14,8 @@ const Banner = ({ data }) => {
 		arrowShape: 'M18.3333 11L3.66668 11M18.3333 11L14.6667 7.33334M18.3333 11L14.6667 14.6667 Z',
 		autoPlay: 5000,
 		pauseAutoPlayOnHover: false,
+		imagesLoaded: true,
+		lazyLoad: true
 	}
 
 	return (
@@ -27,9 +27,9 @@ const Banner = ({ data }) => {
 			</div> */}
 
 			<div className='container container-fluid'>
-				<Flickity className='Slider' elementType='div' disableImagesLoaded={false} options={flickityOptions} reloadOnUpdate static>
-					{data.map((item) => (
-						<Link href={item.href}>
+				<Flickity className='Slider' elementType='div' options={flickityOptions} reloadOnUpdate static>
+					{data.map((item, index) => (
+						<Link key={index} href={item.href}>
 						<Image alt='' src={item.path} width={1440} height={550}></Image>
 					</Link>
 					))}
