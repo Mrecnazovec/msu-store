@@ -2,6 +2,7 @@
 
 .loading {
 	@include mixins.center;
+	min-height: 50vh;
 	.loader-main {
 		position: relative;
 		width: 60px;
