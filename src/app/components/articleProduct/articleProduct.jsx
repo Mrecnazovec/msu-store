@@ -77,7 +77,7 @@ const ArticleProduct = ({ item, index }) => {
 				<div onClick={() => setIsOpen(true)} className='product-content'>
 					<Image alt='' src={imgPath} height={380} width={380}></Image>
 					<div className='product-article-body'>
-						<h3 className='h3'>{item.title}</h3>
+						<h3 className='p'>{item.title}</h3>
 						<div className='choose-color-pic'>
 							{item.details.map((item, index) => (
 								<div
