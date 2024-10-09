@@ -14,9 +14,28 @@ export default async function Home() {
 	const hoodiesData = data.filter((item) => item.subCategories === 'Худи')
 	const tShirtData = data.filter((item) => item.subCategories === 'Футболки')
 
+	const bannerPath = [
+		{
+			path:'/svg/1.svg',
+			href:'#shop'
+		},
+		{
+			path:'/svg/2.svg',
+			href:'#tShirt'
+		},
+		{
+			path:'/svg/3.svg',
+			href:''
+		},
+		{
+			path:'/svg/4.svg',
+			href:''
+		},
+	]
+
 	return (
 		<main className='mainPage'>
-			<Banner imgPath='/svg/banner.svg' />
+			<Banner data={bannerPath} />
 			<Hello />
 			<PreviewSlider />
 			<Mission />

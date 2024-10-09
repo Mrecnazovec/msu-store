@@ -34,6 +34,8 @@
 			.title {
 				color: var(--color-blue);
 				font-family: 'Moscow University';
+
+				@include fluid-text(46, 20)
 			}
 		}
 
