@@ -118,11 +118,46 @@ const Header = () => {
 								Msu <br /> store
 							</p>
 						</Link>
-						<div className='burger-pos visible-mobile'>
+						<ul className='header-list hidden-tablet'>
+						{listData.map((item, index) => (
+							<li
+								key={index}
+								onMouseEnter={() => handleMouseEnter(index)}
+								onMouseLeave={handleMouseLeave}
+								onClick={() => handleClick(index)}
+								className={`dropdown ${activeIndex === index ? 'active' : ''}`}
+							>
+								<Link href={item.href}>
+									{item.title}
+									{item.links && (
+										<svg width='20' height='21' viewBox='0 0 20 21' fill='none' xmlns='http://www.w3.org/2000/svg'>
+											<path
+												fillRule='evenodd'
+												clipRule='evenodd'
+												d='M10.637 12.7022C10.3144 13.0396 9.78676 13.044 9.45856 12.712L5.25627 8.46119C4.92806 8.12917 4.92353 7.58648 5.24616 7.24903C5.5688 6.9116 6.09641 6.9072 6.42464 7.2392L10.0326 10.8889L13.5792 7.17951C13.9018 6.84207 14.4295 6.83767 14.7577 7.16968C15.0859 7.50169 15.0904 8.04438 14.7678 8.38183L10.637 12.7022Z'
+												fill='white'
+											/>
+										</svg>
+									)}
+								</Link>
+
+								{item.links && (
+									<div className='dropdown-item'>
+										{item.links.map((item, index) => (
+											<Link key={index} href={item.href}>
+												{item.title}
+											</Link>
+										))}
+									</div>
+								)}
+							</li>
+						))}
+					</ul>
+						<div className='burger-pos visible-tablet'>
 							<div className={`burger ${isOpen ? 'open' : ''}`} onClick={toggleMenu}></div>
 						</div>
 
-						<ul className='header-list currency-list hidden-mobile'>
+						<ul className='header-list currency-list hidden-tablet'>
 							<li
 								onMouseEnter={() => handleMouseEnter(111)}
 								onMouseLeave={handleMouseLeave}
@@ -159,43 +194,9 @@ const Header = () => {
 							</li>
 						</ul>
 					</div>
-					<ul className='header-list hidden-mobile'>
-						{listData.map((item, index) => (
-							<li
-								key={index}
-								onMouseEnter={() => handleMouseEnter(index)}
-								onMouseLeave={handleMouseLeave}
-								onClick={() => handleClick(index)}
-								className={`dropdown ${activeIndex === index ? 'active' : ''}`}
-							>
-								<Link href={item.href}>
-									{item.title}
-									{item.links && (
-										<svg width='20' height='21' viewBox='0 0 20 21' fill='none' xmlns='http://www.w3.org/2000/svg'>
-											<path
-												fillRule='evenodd'
-												clipRule='evenodd'
-												d='M10.637 12.7022C10.3144 13.0396 9.78676 13.044 9.45856 12.712L5.25627 8.46119C4.92806 8.12917 4.92353 7.58648 5.24616 7.24903C5.5688 6.9116 6.09641 6.9072 6.42464 7.2392L10.0326 10.8889L13.5792 7.17951C13.9018 6.84207 14.4295 6.83767 14.7577 7.16968C15.0859 7.50169 15.0904 8.04438 14.7678 8.38183L10.637 12.7022Z'
-												fill='white'
-											/>
-										</svg>
-									)}
-								</Link>
-
-								{item.links && (
-									<div className='dropdown-item'>
-										{item.links.map((item, index) => (
-											<Link key={index} href={item.href}>
-												{item.title}
-											</Link>
-										))}
-									</div>
-								)}
-							</li>
-						))}
-					</ul>
+					
 				</nav>
-				<div className={`header-list burger-box visible-mobile ${isOpen ? 'open' : ''}`}>
+				<div className={`header-list burger-box visible-tablet ${isOpen ? 'open' : ''}`}>
 					<ul>
 						{listData.map((item, index) => (
 							<li

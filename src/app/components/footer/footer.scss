@@ -17,6 +17,11 @@
 		p {
 			text-transform: uppercase;
 			font-family: 'Moscow University';
+			font-size: 26px;
+			height: 25px;
+			br {
+					display: none;
+			}
 		}
 
 		svg {
