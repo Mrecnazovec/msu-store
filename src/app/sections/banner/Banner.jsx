@@ -1,9 +1,9 @@
 'use client'
 
-import Link from 'next/link'
-import './banner.scss'
 import Image from 'next/image'
+import Link from 'next/link'
 import Flickity from 'react-flickity-component'
+import './banner.scss'
 import './swiper.scss'
 
 const Banner = ({ data }) => {
@@ -15,7 +15,7 @@ const Banner = ({ data }) => {
 		autoPlay: 5000,
 		pauseAutoPlayOnHover: false,
 		imagesLoaded: true,
-		lazyLoad: true
+		lazyLoad: true,
 	}
 
 	return (
@@ -30,8 +30,8 @@ const Banner = ({ data }) => {
 				<Flickity className='Slider' elementType='div' options={flickityOptions} reloadOnUpdate static>
 					{data.map((item, index) => (
 						<Link key={index} href={item.href}>
-						<Image alt='' src={item.path} width={1440} height={550}></Image>
-					</Link>
+							<Image alt='' src={item.path} width={1440} height={550}></Image>
+						</Link>
 					))}
 				</Flickity>
 			</div>

@@ -86,7 +86,7 @@ const page = () => {
 		}
 	}, [currency, offerData])
 
-	if (ready) {
+	if (!ready) {
 		return (
 			<main className='nullOffer'>
 				<div className='container'>
