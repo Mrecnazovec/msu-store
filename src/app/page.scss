@@ -2,9 +2,14 @@
 @import '/src/app/styles/mixins';
 
 .mainPage {
-	
 	.clothSection {
 		padding-block: calc(var(--section-padding-y) * 2);
+
+		.product {
+			&:not(:last-child) {
+				margin-bottom: calc(var(--section-padding-y) * 2);
+			}
+		}
 	}
 	.cloth {
 		display: grid;

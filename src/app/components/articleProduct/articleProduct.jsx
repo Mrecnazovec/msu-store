@@ -79,7 +79,7 @@ const ArticleProduct = ({ item, index }) => {
 						<h3 className='h3'>{item.title}</h3>
 						<div className='choose-color-pic'>
 							{item.details.map((item, index) => (
-								<div onMouseEnter={() => handleColor(index)} key={index} className={`color-box circle-pic ${indexInfo == index ? 'active' : ''}`}>
+								<div title={item.color} onMouseEnter={() => handleColor(index)} key={index} className={`color-box circle-pic ${indexInfo == index ? 'active' : ''}`}>
 									<Image alt='' width={30} height={30} src={item.imgPath[0]}></Image>
 								</div>
 							))}
