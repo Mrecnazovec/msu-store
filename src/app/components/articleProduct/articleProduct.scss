@@ -42,6 +42,7 @@
 	.title-modal-box {
 		display: flex;
 		gap: 3px;
+		flex-wrap: wrap;
 
 		@include mobile {
 			flex-direction: column;
@@ -333,6 +334,7 @@
 
 			.title-modal-box {
 				gap: 5px;
+				flex-wrap: wrap;
 
 				@include mobile {
 					flex-direction: column;
@@ -403,7 +405,6 @@
 				}
 
 				.countCalc {
-				
 					@include fluid-text(20, 18);
 					cursor: pointer;
 
