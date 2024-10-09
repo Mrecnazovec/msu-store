@@ -17,7 +17,7 @@ const Mission = () => {
 				</div>
 				<div className='mission-card'>
 					<Image alt='' src='/svg/back.svg' width={40} height={40}></Image>
-					<p>Возврат в течение 3 дней с момента покупки</p>
+					<p>Возврат возможен в течение 3 дней с момента покупки</p>
 				</div>
 				<div className='mission-card'>
 					<Image alt='' src='/svg/fromStudents.svg' width={40} height={40}></Image>

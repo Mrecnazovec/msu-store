@@ -53,6 +53,11 @@ const page = () => {
 			setUser('')
 			setName('')
 			setReady(true)
+
+			window.scrollTo({
+				top: 0,
+				behavior: 'smooth',
+			});
 		} catch (error) {
 			setError('Ошибка:', error)
 		}
