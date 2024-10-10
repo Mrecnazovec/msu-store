@@ -23,7 +23,7 @@ const ArticleProduct = ({ item, index }) => {
 	const [indexInfo, setIndexInfo] = useState(item.active)
 	const [indexPic, setIndexPic] = useState(item.active)
 
-	const offerDataItem = [item.title, imgPath, item.details[indexInfo].size[sizeIndex].title, item.details[indexInfo].color, item.price, count]
+	const offerDataItem = [item.title, imgPath, item.details[indexInfo].size[sizeIndex].title, item.details[indexInfo].color, item.price, count, item.subCategories]
 
 	const handleColor = (index) => {
 		setImgPath(item.details[index].imgPath[0])

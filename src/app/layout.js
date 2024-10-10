@@ -36,6 +36,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang='en'>
+			<head>
+        <meta name="p:domain_verify" content="65adbd7f4d33c93de5031501e501ff09" />
+        <title>{metadata.title}</title>
+      </head>
 			<body>
 				<NextTopLoader
 					color='#2299DD'

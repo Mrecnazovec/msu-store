@@ -1,11 +1,11 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import { useCurrencyContext } from '../context/CurrencyContext'
 import { useOfferContext } from '../context/offerContext'
 import './page.scss'
-import { useState, useEffect } from 'react'
-import Link from 'next/link'
-import { useCurrencyContext } from '../context/CurrencyContext'
 
 const page = () => {
 	const { currency } = useCurrencyContext()
@@ -20,7 +20,9 @@ const page = () => {
 	const sendToTelegram = async (data) => {
 		const token = '7526799764:AAFmZWYKs_Nw55qE8b9F70O5dbtGwpSDW3M'
 		const chatId = '-1002453789209'
-		const message = `Новый заказ:\n${data[0]}\nИмя: ${data[4]}\nРазмер: ${data[1]}\nЦвет: ${data[2]}\nКоличество: ${data[7]}\nЦена: ${data[5]}\nНомер телефона: ${data[3]}\nЮзер: ${data[6]}`
+		const message = `Новый заказ:\n${data[8] + ' ' + data[0]}\nИмя: ${data[4]}\nРазмер: ${data[1]}\nЦвет: ${data[2]}\nКоличество: ${data[7]}\nЦена: ${
+			data[5]
+		}\nНомер телефона: ${data[3]}\nЮзер: ${data[6]}`
 
 		const url = `https://api.telegram.org/bot${token}/sendMessage`
 
@@ -61,7 +63,7 @@ const page = () => {
 		}
 	}
 
-	const data = [offerData[0], offerData[2], offerData[3], comment, name, price, user, offerData[5]]
+	const data = [offerData[0], offerData[2], offerData[3], comment, name, price, user, offerData[5], offerData[6]]
 
 	useEffect(() => {
 		if (offerData.length > 0) {
@@ -116,11 +118,11 @@ const page = () => {
 					<div className='offer-box'>
 						<article className='offer-details'>
 							<Image src={offerData[1]} width={400} height={400} alt='' />
-							<p>{offerData[0]}</p>
-							<p>Размер: {offerData[2]}</p>
-							<p>Цвет: {offerData[3]}</p>
-							<p>Цена: {price}</p>
-							<p>Количество: {offerData[5]}</p>
+							<p><span>{offerData[6] + ' ' + offerData[0]}</span></p>
+							<p><span>Размер:</span> {offerData[2]}</p>
+							<p><span>Цвет:</span> {offerData[3]}</p>
+							<p><span>Цена:</span> {price}</p>
+							<p><span>Количество:</span> {offerData[5]}</p>
 
 							<label>
 								Имя:

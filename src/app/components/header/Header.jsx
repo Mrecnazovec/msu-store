@@ -11,7 +11,6 @@ const Header = () => {
 	const [isOpen, setIsOpen] = useState(false)
 	const [isHeaderVisible, setIsHeaderVisible] = useState(true) // Новое состояние для видимости заголовка
 	const { currency, setCurrency } = useCurrencyContext()
-	
 
 	const listData = [
 		{
@@ -120,40 +119,40 @@ const Header = () => {
 							</p>
 						</Link>
 						<ul className='header-list hidden-tablet'>
-						{listData.map((item, index) => (
-							<li
-								key={index}
-								onMouseEnter={() => handleMouseEnter(index)}
-								onMouseLeave={handleMouseLeave}
-								onClick={() => handleClick(index)}
-								className={`dropdown ${activeIndex === index ? 'active' : ''}`}
-							>
-								<Link href={item.href}>
-									{item.title}
-									{item.links && (
-										<svg width='20' height='21' viewBox='0 0 20 21' fill='none' xmlns='http://www.w3.org/2000/svg'>
-											<path
-												fillRule='evenodd'
-												clipRule='evenodd'
-												d='M10.637 12.7022C10.3144 13.0396 9.78676 13.044 9.45856 12.712L5.25627 8.46119C4.92806 8.12917 4.92353 7.58648 5.24616 7.24903C5.5688 6.9116 6.09641 6.9072 6.42464 7.2392L10.0326 10.8889L13.5792 7.17951C13.9018 6.84207 14.4295 6.83767 14.7577 7.16968C15.0859 7.50169 15.0904 8.04438 14.7678 8.38183L10.637 12.7022Z'
-												fill='white'
-											/>
-										</svg>
-									)}
-								</Link>
+							{listData.map((item, index) => (
+								<li
+									key={index}
+									onMouseEnter={() => handleMouseEnter(index)}
+									onMouseLeave={handleMouseLeave}
+									onClick={() => handleClick(index)}
+									className={`dropdown ${activeIndex === index ? 'active' : ''}`}
+								>
+									<Link href={item.href}>
+										{item.title}
+										{item.links && (
+											<svg width='20' height='21' viewBox='0 0 20 21' fill='none' xmlns='http://www.w3.org/2000/svg'>
+												<path
+													fillRule='evenodd'
+													clipRule='evenodd'
+													d='M10.637 12.7022C10.3144 13.0396 9.78676 13.044 9.45856 12.712L5.25627 8.46119C4.92806 8.12917 4.92353 7.58648 5.24616 7.24903C5.5688 6.9116 6.09641 6.9072 6.42464 7.2392L10.0326 10.8889L13.5792 7.17951C13.9018 6.84207 14.4295 6.83767 14.7577 7.16968C15.0859 7.50169 15.0904 8.04438 14.7678 8.38183L10.637 12.7022Z'
+													fill='white'
+												/>
+											</svg>
+										)}
+									</Link>
 
-								{item.links && (
-									<div className='dropdown-item'>
-										{item.links.map((item, index) => (
-											<Link key={index} href={item.href}>
-												{item.title}
-											</Link>
-										))}
-									</div>
-								)}
-							</li>
-						))}
-					</ul>
+									{item.links && (
+										<div className='dropdown-item'>
+											{item.links.map((item, index) => (
+												<Link key={index} href={item.href}>
+													{item.title}
+												</Link>
+											))}
+										</div>
+									)}
+								</li>
+							))}
+						</ul>
 						<div className='burger-pos visible-tablet'>
 							<div className={`burger ${isOpen ? 'open' : ''}`} onClick={toggleMenu}></div>
 						</div>
@@ -195,7 +194,6 @@ const Header = () => {
 							</li>
 						</ul>
 					</div>
-					
 				</nav>
 				<div className={`header-list burger-box visible-tablet ${isOpen ? 'open' : ''}`}>
 					<ul>
@@ -313,7 +311,7 @@ const Header = () => {
 									</defs>
 								</svg>
 							</Link>
-							<Link target='_blank' href=''>
+							<Link target='_blank' href='https://www.vk.com/msu.store'>
 								<svg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'>
 									<g clipPath='url(#clip0_129_20)'>
 										<path
@@ -343,7 +341,7 @@ const Header = () => {
 									</defs>
 								</svg>
 							</Link>
-							<Link target='_blank' href=''>
+							<Link target='_blank' href='https://www.pinterest.com/msustore'>
 								<svg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'>
 									<path
 										d='M14.9998 0C6.72898 0 0 6.72898 0 15C0 18.8267 1.4412 22.4705 4.05788 25.2602C4.51291 25.7453 5.27477 25.7697 5.75999 25.3146C6.24505 24.8596 6.26946 24.0976 5.81442 23.6125C3.6181 21.2709 2.40843 18.2122 2.40843 15C2.40843 8.05699 8.05699 2.40843 14.9998 2.40843C21.9429 2.40843 27.5916 8.05699 27.5916 15C27.5916 21.943 21.9429 27.5916 14.9998 27.5916C13.769 27.5916 12.5624 27.4164 11.4 27.0699L12.6317 22.2556C13.3937 22.4416 14.18 22.5361 14.9827 22.5361C20.0416 22.5361 24.1575 18.7382 24.1575 14.07C24.1575 9.40169 20.0416 5.60361 14.9827 5.60361C9.92368 5.60361 5.80784 9.40169 5.80784 14.07C5.80784 15.7522 6.3409 17.3778 7.34955 18.7708C7.73956 19.3095 8.49259 19.4301 9.03112 19.0399C9.5698 18.6499 9.69022 17.897 9.30022 17.3583C8.59102 16.3787 8.21627 15.2418 8.21627 14.07C8.21627 10.7297 11.2517 8.01203 14.9827 8.01203C18.7136 8.01203 21.7491 10.7297 21.7491 14.07C21.7491 17.4102 18.7138 20.1277 14.9827 20.1277C14.3831 20.1277 13.7963 20.059 13.2287 19.9227L14.9144 13.3334C15.0792 12.689 14.6904 12.0331 14.0463 11.8682C13.4019 11.7033 12.746 12.0921 12.5811 12.7364L8.79204 27.5471C8.64143 28.1357 8.95308 28.7444 9.51842 28.9665C11.2647 29.6522 13.1091 30 14.9998 30C23.271 30 30 23.271 30 15C30 6.72898 23.271 0 14.9998 0Z'
@@ -351,7 +349,7 @@ const Header = () => {
 									/>
 								</svg>
 							</Link>
-							<Link target='_blank' href=''>
+							<Link target='_blank' href='https://www.tiktok.com/msu.store'>
 								<svg width='30' height='30' viewBox='0 0 30 30' fill='none' xmlns='http://www.w3.org/2000/svg'>
 									<path
 										d='M27.2305 6.58974C24.0816 6.58974 21.5197 4.02786 21.5197 0.878906C21.5197 0.393448 21.126 0 20.6408 0H15.9336C15.4482 0 15.0547 0.393448 15.0547 0.878906V20.1778C15.0547 22.029 13.5487 23.535 11.6972 23.535C9.84604 23.535 8.34 22.029 8.34 20.1778C8.34 18.3263 9.84604 16.8203 11.6972 16.8203C12.1827 16.8203 12.5761 16.4268 12.5761 15.9414V11.2342C12.5761 10.749 12.1827 10.3553 11.6972 10.3553C6.2812 10.3553 1.875 14.7617 1.875 20.1778C1.875 25.5938 6.2812 30 11.6972 30C17.1133 30 21.5197 25.5938 21.5197 20.1778V11.6352C23.269 12.5679 25.2155 13.0547 27.2305 13.0547C27.716 13.0547 28.1094 12.6613 28.1094 12.1758V7.46864C28.1094 6.98341 27.716 6.58974 27.2305 6.58974ZM26.3516 11.2605C24.4753 11.1044 22.6934 10.4489 21.1539 9.34158C20.8864 9.14886 20.5334 9.12231 20.2398 9.27292C19.9464 9.42307 19.7619 9.72519 19.7619 10.055V20.1778C19.7619 24.6245 16.144 28.2422 11.6972 28.2422C7.25052 28.2422 3.63281 24.6245 3.63281 20.1778C3.63281 16.0279 6.7836 12.5999 10.8183 12.1607V15.138C8.41507 15.556 6.58218 17.6566 6.58218 20.1778C6.58218 22.9983 8.87672 25.293 11.6972 25.293C14.518 25.293 16.8125 22.9983 16.8125 20.1778V1.75781H19.8132C20.2158 5.17502 22.9344 7.89368 26.3516 8.29628V11.2605Z'
