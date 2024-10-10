@@ -23,7 +23,15 @@ const ArticleProduct = ({ item, index }) => {
 	const [indexInfo, setIndexInfo] = useState(item.active)
 	const [indexPic, setIndexPic] = useState(item.active)
 
-	const offerDataItem = [item.title, imgPath, item.details[indexInfo].size[sizeIndex].title, item.details[indexInfo].color, item.price, count, item.subCategories]
+	const offerDataItem = [
+		item.title,
+		imgPath,
+		item.details[indexInfo].size[sizeIndex].title,
+		item.details[indexInfo].color,
+		item.price,
+		count,
+		item.subCategories,
+	]
 
 	const handleColor = (index) => {
 		setImgPath(item.details[index].imgPath[0])
@@ -277,35 +285,12 @@ const ArticleProduct = ({ item, index }) => {
 									</svg>
 								</p>
 							</div>
-							<p className='modal-text-pluses border'>
-								<Image alt='' className='modal-icon' src='/svg/warm.svg' width={30} height={30}></Image>Теплая и мягкая ткань из высококачественного
-								хлопка
-							</p>
-							<p className='modal-text-pluses'>
-								<Image alt='' className='modal-icon' src='/svg/oversize.svg' width={30} height={30}></Image>Оверсайз крой
-							</p>
-							<p className='modal-text-pluses'>
-								<Image alt='' className='modal-icon' src='/svg/embroidery.svg' width={30} height={30}></Image>Вышивка на передней и задней стороне
-							</p>
-							<p className='modal-text-pluses'>
-								<Image alt='' className='modal-icon' src='/svg/production.svg' width={30} height={30}></Image>Изготовление в течение 3-7 дней
-							</p>
 
-							<p className='modal-text-pluses'>
-								<Image alt='' className='modal-icon' src='/svg/discounttwo.svg' width={30} height={30}></Image>Скидка 15% на первый заказ всем
-								студентам МГУ
-							</p>
-							<p className='modal-text-pluses'>
-								<Image alt='' className='modal-icon' src='/svg/bystudents.svg' width={30} height={30}></Image>Создано студентами МГУ
-							</p>
-							<p className='modal-text-pluses'>
-								<Image alt='' className='modal-icon' src='/svg/tr.svg' width={30} height={30}></Image>Вся прибыль реинвестируется в зарплаты
-								студентов, финансовую помощь и развитие проекта
-							</p>
-							<p className='modal-text-pluses'>
-								<Image alt='' className='modal-icon' src='/svg/delivertwo.svg' width={30} height={30}></Image>Доставка по всему миру
-							</p>
-
+							{item.pluses.map((item, index) => (
+								<p key={index} className='modal-text-pluses border'>
+									<Image alt='' className='modal-icon' src={item.imgPath} width={30} height={30}></Image>{item.title}
+								</p>
+							))}
 							<Link onClick={() => setOfferData(offerDataItem)} className='offerBtn' href='/offer'>
 								Заказать
 							</Link>
