@@ -77,6 +77,9 @@ const Header = () => {
 				// Скроллим вверх
 				setIsHeaderVisible(true)
 			}
+			if (isOpen) {
+				setIsHeaderVisible(true)
+			}
 			lastScrollY = window.scrollY
 		}
 
@@ -87,20 +90,26 @@ const Header = () => {
 		}
 	}, [])
 
+	useEffect(()=>{
+		if (isOpen) {
+			setIsHeaderVisible(true)
+		}
+	},[isHeaderVisible])
+
 	
 
-	// useEffect(() => {
-	// 	if (isOpen) {
-	// 		document.body.style.overflow = 'hidden'
-	// 	} else {
-	// 		document.body.style.overflow = ''
-	// 	}
+	useEffect(() => {
+		if (isOpen) {
+			document.body.style.overflow = 'hidden'
+		} else {
+			document.body.style.overflow = ''
+		}
 
-	// 	// Возвращаем скролл при размонтировании компонента
-	// 	return () => {
-	// 		document.body.style.overflow = ''
-	// 	}
-	// }, [isOpen])
+		// Возвращаем скролл при размонтировании компонента
+		return () => {
+			document.body.style.overflow = ''
+		}
+	}, [isOpen])
 
 	return (
 		<header className={`header ${isHeaderVisible ? 'visible' : 'hidden'}`}>
@@ -208,7 +217,7 @@ const Header = () => {
 								className={`dropdown ${activeIndex === index ? 'active' : ''}`}
 							>
 								<p>
-									<Link href={item.href}>{item.title}</Link>
+									<Link onClick={()=>setIsOpen(false)} href={item.href}>{item.title}</Link>
 									{item.links && (
 										<svg width='20' height='21' viewBox='0 0 20 21' fill='none' xmlns='http://www.w3.org/2000/svg'>
 											<path
@@ -224,7 +233,7 @@ const Header = () => {
 								{item.links && (
 									<div className='dropdown-item'>
 										{item.links.map((item, index) => (
-											<Link key={index} href={item.href}>
+											<Link onClick={()=>setIsOpen(false)} key={index} href={item.href}>
 												{item.title}
 											</Link>
 										))}
