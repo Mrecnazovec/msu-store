@@ -41,7 +41,7 @@ const Header = () => {
 		},
 		{
 			title: 'О нас',
-			href: '/about-us',
+			href: '/not-found',
 		},
 	]
 
@@ -270,17 +270,17 @@ const Header = () => {
 					</ul>
 					<ul className='burger-dark-box'>
 						<li className='dropdown'>
-							<Link href=''>Часто задаваемые вопросы</Link>
+							<Link href='/not-found'>Часто задаваемые вопросы</Link>
 						</li>
 						<li className='dropdown'>
-							<Link href=''>Купить подарочную карту</Link>
+							<Link href='/not-found'>Купить подарочную карту</Link>
 						</li>
 						<li className='dropdown'>
-							<Link href=''>Оптовые заказы</Link>
+							<Link href='/not-found'>Оптовые заказы</Link>
 						</li>
 
 						<li className='dropdown'>
-							<Link href=''>Доставка</Link>
+							<Link href='/not-found'>Доставка</Link>
 						</li>
 
 						<li className='dropdown dropdown-soc1als'>

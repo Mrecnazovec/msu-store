@@ -95,14 +95,14 @@ const Footer = () => {
 					</div>
 				</div>
 				<div className='copyright'>
-					<Link href='/about-us'>О нас</Link>
-					<Link href=''>Часто задаваемые вопросы</Link>
-					<Link href=''>Купить подарочную карту</Link>
-					<Link href=''>Оптовые заказы</Link>
+					<Link href='/not-found'>О нас</Link>
+					<Link href='/not-found'>Часто задаваемые вопросы</Link>
+					<Link href='/not-found'>Купить подарочную карту</Link>
+					<Link href='/not-found'>Оптовые заказы</Link>
 				</div>
 				<div className='copyright'>
 					<p>©2022-2024 MSU STORE™</p>
-					<Link href=''>Доставка</Link>
+					<Link href='/not-found'>Доставка</Link>
 					<Link href='/pages/refund-policy'>Политика возврата средств</Link>
 					<Link href='/pages/public-offer'>Публичная оферта</Link>
 					<Link href='/pages/privacy-policy'>Политика конфиденциальности</Link>

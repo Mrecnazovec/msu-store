@@ -26,7 +26,7 @@ const Marquee = () => {
   return (
     <div className={styles.marqueeContainer}>
       <div className={styles.marquee}>
-        <p>Сайт находится в разработке, в скором времени будет доступен полный функционал</p>
+        <p>Материал на сайте будет дополнятся</p>
       </div>
     </div>
   );
