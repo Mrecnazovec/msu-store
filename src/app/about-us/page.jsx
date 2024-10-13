@@ -22,7 +22,7 @@ const page = () => {
 			surname: "Грецов '27",
 			role: 'Менеджер по',
 			roleTwo:'производству',
-			imgPath: '/jpg/Ilya.jpg',
+			imgPath: '/jpg/Grecov.jpg',
 		},
 		{
 			name: 'Амаль',
