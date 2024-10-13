@@ -11,8 +11,10 @@ export const revalidate = 10
 export default async function Home() {
 	const { data, errMsg } = await getProduct()
 
-	const hoodiesData = data.filter((item) => item.subCategories === 'Худи')
-	const tShirtData = data.filter((item) => item.subCategories === 'Футболка')
+	const hoodiesData = data.filter((item) => item.subCategories === 'Худи' && item.letVisible === true)
+	const tShirtData = data.filter((item) => item.subCategories === 'Футболка' && item.letVisible === true)
+
+	
 
 	const bannerPath = [
 		{
@@ -25,10 +27,6 @@ export default async function Home() {
 		},
 		{
 			path:'/svg/3.svg',
-			href:''
-		},
-		{
-			path:'/svg/4.svg',
 			href:''
 		},
 	]
@@ -53,9 +51,9 @@ export default async function Home() {
 					</div>
 				</div>
 				<div className='product container'>
-					<h2 data-aos='fade-down' id='tShirt'>
+					{tShirtData.length !== 0 && <h2 data-aos='fade-down' id='tShirt'>
 						Футболки
-					</h2>
+					</h2>}
 
 					<div className='cloth'>
 						{tShirtData.map((item, index) => (

@@ -15,6 +15,8 @@ const ArticleProduct = ({ item, index }) => {
 	const [imgPath, setImgPath] = useState(item.details[item.active].imgPath[0])
 	const [picPath, setPicPath] = useState(item.details[item.active].imgPath[0])
 	const [isOpen, setIsOpen] = useState(false)
+	const [isOpenPicture, setIsOpenPicture] = useState(false)
+
 	const [sizeIndex, setSizeIndex] = useState(item.active)
 	const [ddIsOpen, setDdIsOpen] = useState(false)
 	const [sizeModal, setSizeModal] = useState(false)
@@ -141,7 +143,9 @@ const ArticleProduct = ({ item, index }) => {
 						</button>
 						<div className='modal-picture'>
 							<div className='modal-picture-main'>
-								<Image alt='' src={imgPath} height={380} width={380}></Image>
+								<div className='modal-picture-img'>
+									<Image onClick={() => setIsOpenPicture(true)} alt='' src={imgPath} height={380} width={380}></Image>
+								</div>
 								<Flickity className='Slider' elementType='div' disableImagesLoaded={false} options={flickityOptions} reloadOnUpdate static>
 									{item.details[indexInfo].imgPath.map((item, index) => (
 										<Image
@@ -285,16 +289,27 @@ const ArticleProduct = ({ item, index }) => {
 									</svg>
 								</p>
 							</div>
-
-							{item.pluses.map((item, index) => (
-								<p key={index} className='modal-text-pluses border'>
-									<Image alt='' className='modal-icon' src={item.imgPath} width={30} height={30}></Image>{item.title}
-								</p>
-							))}
 							<Link onClick={() => setOfferData(offerDataItem)} className='offerBtn' href='/offer'>
 								Заказать
 							</Link>
+							{item.pluses.map((item, index) => (
+								<p key={index} className='modal-text-pluses border'>
+									<Image alt='' className='modal-icon' src={item.imgPath} width={30} height={30}></Image>
+									{item.title}
+								</p>
+							))}
 						</div>
+					</div>
+				</div>
+			</div>
+
+			<div className='product-article modal-article'>
+				<div id='modalWindow' onClick={handleOverlayClick} className={`modalOverlay ${isOpenPicture ? 'open' : ''} ${sizeModal ? 'openSub' : ''}`}>
+					<div data-aos='fade-down' className='modalContent fullscreen-picture'>
+						<button onClick={() => setIsOpenPicture(false)} className='closeButtonModal'>
+							<Image alt='' width={30} height={30} src='/svg/close.svg'></Image>
+						</button>
+						<Image className='modal-product-picture' alt='' src={imgPath} height={380} width={380}></Image>
 					</div>
 				</div>
 			</div>
