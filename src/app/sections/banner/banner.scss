@@ -2,18 +2,18 @@
 @import '/src/app/styles/mixins';
 
 .banner {
-	max-height: 710px;
+	// max-height: 710px;
 	overflow: hidden;
 
-	@include tablet {
-		max-height: 505px;
-	}
-	@include mobile {
-		max-height: 380px;
-	}
-	@include mobile-s {
-		max-height: 240px;
-	}
+	// @include tablet {
+	// 	max-height: 505px;
+	// }
+	// @include mobile {
+	// 	max-height: 380px;
+	// }
+	// @include mobile-s {
+	// 	max-height: 240px;
+	// }
 	a {
 		img {
 			width: 100%;

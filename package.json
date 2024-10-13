@@ -17,7 +17,9 @@
     "nextjs-toploader": "^3.7.15",
     "react": "^18",
     "react-dom": "^18",
-    "react-flickity-component": "^4.0.7"
+    "react-flickity-component": "^4.0.7",
+    "react-slick": "^0.30.2",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "sass": "^1.79.4"
