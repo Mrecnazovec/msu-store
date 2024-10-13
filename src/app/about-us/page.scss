@@ -1,0 +1,91 @@
+@import '/src/app/styles/media';
+@import '/src/app/styles/mixins';
+
+.about-us {
+	padding-block: var(--margin-base);
+	.container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		gap: calc(var(--margin-base));
+	}
+	.about-hello {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		gap: calc(var(--margin-base) / 2);
+
+		.logo-box {
+			display: flex;
+			align-items: center;
+
+			gap: calc(var(--margin-base) / 2);
+			color: var(--color-blue);
+			h2 {
+				margin: 0;
+				height: 50px;
+				font-weight: 600;
+			}
+		}
+		p {
+			text-align: center;
+			max-width: 900px;
+		}
+	}
+	.mission-box {
+		text-align: center;
+		p {
+			max-width: 900px;
+
+			&:not(:last-child) {
+				margin-bottom: calc(var(--margin-base) / 2);
+			}
+			&:last-child {
+				opacity: 0.7;
+			}
+		}
+	}
+	.team-box {
+		text-align: center;
+		.h3 {
+			color: var(--color-blue);
+			margin-bottom: calc(var(--margin-base) / 2);
+		}
+		p {
+			max-width: 800px;
+		}
+	}
+	.team-pic-box {
+		display: grid;
+		grid-template-columns: repeat(6, 1fr);
+		gap: var(--margin-base);
+		@include mobile {
+			grid-template-columns: repeat(3, 1fr);
+		}
+		@include mobile-s {
+			grid-template-columns: repeat(2, 1fr);
+		}
+		.person-box {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			gap: 5px;
+
+			img {
+				border-radius: 50%;
+			}
+			.personName {
+				text-align: center;
+				color: var(--color-blue);
+				@include fluid-text(18, 14);
+			}
+			.personRole {
+				text-align: center;
+				@include fluid-text(16, 12);
+			}
+		}
+	}
+}

@@ -41,7 +41,7 @@ const Header = () => {
 		},
 		{
 			title: 'О нас',
-			href: '/',
+			href: '/about-us',
 		},
 	]
 
