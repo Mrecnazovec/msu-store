@@ -27,7 +27,7 @@ const Banner = ({ data }) => {
           {data.map((item, index) => (
             <div key={index}>
               <Link href={item.href}>
-                <Image alt='' src={item.path} width={1440} height={550} />
+                <Image alt='' src={item.path} width={1440} height={550} placeholder="blur" blurDataURL={item.path}/>
               </Link>
             </div>
           ))}
