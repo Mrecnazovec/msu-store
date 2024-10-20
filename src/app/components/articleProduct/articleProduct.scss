@@ -611,6 +611,17 @@
 				text-align: center;
 			}
 		}
+		.not-available {
+			background-color: transparent;
+			color: var(--color-paragraph);
+			width: fit-content;
+			border-radius: var(--border-radius-small);
+			padding: 5px 15px;
+			border: 1px solid var(--color-paragraph);
+			width: 100%;
+			text-align: center;
+			font-weight: 600;
+		}
 	}
 }
 .modal-article {
@@ -632,5 +643,4 @@
 		align-items: center;
 		justify-content: center;
 	}
-	
 }

@@ -289,9 +289,17 @@ const ArticleProduct = ({ item, index }) => {
 									</svg>
 								</p>
 							</div>
-							<Link onClick={() => setOfferData(offerDataItem)} className='offerBtn' href='/offer'>
+							{/* <Link onClick={() => setOfferData(offerDataItem)} className='offerBtn' href='/offer'>
 								Заказать
-							</Link>
+							</Link> */}
+							{item.details[indexInfo].color == 'Белый Агат' ? (
+								<p className='not-available'>На данный момент недоступно</p>
+							) : (
+								<Link onClick={() => setOfferData(offerDataItem)} className='offerBtn' href='/offer'>
+									Заказать
+								</Link>
+							)}
+
 							{item.pluses.map((item, index) => (
 								<p key={index} className='modal-text-pluses border'>
 									<Image alt='' className='modal-icon' src={item.imgPath} width={30} height={30}></Image>

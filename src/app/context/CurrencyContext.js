@@ -10,7 +10,6 @@ export const GlobalCurrencyContext = ({ children }) => {
 	const [data, setData] = useState('')
 	const [currency, setCurrency] = useState('Uzb')
 
-	// Fetch the data from the API
 	useEffect(() => {
 		fetch(url)
 			.then((response) => {
